@@ -42,10 +42,17 @@
   --shadow-dark-200: 2px 0px 20px 0px rgba(39, 36, 36, 0.04);
 }
 
+@utility bg-auth-dark {
+  background-image: url("/images/auth-dark.png");
+}
+
+@utility bg-auth-light {
+  background-image: url("/images/auth-light.png");
+}
+
 @utility bg-primary-gradient {
   background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
 }
-
 @utility bg-dark-gradient {
   background: linear-gradient(
     232deg,
