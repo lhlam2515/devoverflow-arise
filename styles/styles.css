@@ -1,0 +1,117 @@
+/* Customized-Style Utility Classes */
+
+@utility bg-light850-dark100 {
+  @apply bg-light-850 dark:bg-dark-100;
+}
+
+@utility bg-light900-dark200 {
+  @apply bg-light-900 dark:bg-dark-200;
+}
+
+@utility bg-light900-dark300 {
+  @apply bg-light-900 dark:bg-dark-300;
+}
+
+@utility bg-light800-darkgradient {
+  @apply bg-light-800 dark:bg-dark-gradient;
+}
+
+@utility bg-light800-dark400 {
+  @apply bg-light-800 dark:bg-dark-400;
+}
+
+@utility bg-light700-dark400 {
+  @apply bg-light-700 dark:bg-dark-400;
+}
+
+@utility bg-light700-dark300 {
+  @apply bg-light-700 dark:bg-dark-300;
+}
+
+@utility bg-light800-dark400 {
+  @apply bg-light-800 dark:bg-dark-400;
+}
+
+@utility bg-light800-dark300 {
+  @apply bg-light-800 dark:bg-dark-300;
+}
+
+@utility bg-light800-dark200 {
+  @apply bg-light-800 dark:bg-dark-200;
+}
+
+@utility bg-dark400-light900 {
+  @apply dark:bg-dark-400 bg-light-900;
+}
+
+@utility text-dark100-light900 {
+  @apply text-dark-100 dark:text-light-900;
+}
+
+@utility text-dark200-light900 {
+  @apply text-dark-200 dark:text-light-900;
+}
+
+@utility text-dark200-light800 {
+  @apply text-dark-200 dark:text-light-800;
+}
+
+@utility text-dark300-light700 {
+  @apply text-dark-300 dark:text-light-700;
+}
+
+@utility text-dark400-light700 {
+  @apply text-dark-400 dark:text-light-700;
+}
+
+@utility text-dark500-light700 {
+  @apply text-dark-500 dark:text-light-700;
+}
+
+@utility text-dark500-light500 {
+  @apply text-dark-500 dark:text-light-500;
+}
+
+@utility text-dark500-light400 {
+  @apply text-dark-500 dark:text-light-400;
+}
+
+@utility text-dark300-light900 {
+  @apply text-dark-300 dark:text-light-900;
+}
+
+@utility text-dark400-light800 {
+  @apply text-dark-400 dark:text-light-800;
+}
+
+@utility text-light400-light500 {
+  @apply text-light-400 dark:text-light-500;
+}
+
+@utility text-dark400-light500 {
+  @apply text-dark-400 dark:text-light-500;
+}
+
+@utility text-dark400-light900 {
+  @apply text-dark-400 dark:text-light-900;
+}
+
+@utility text-light400-light500 {
+  @apply text-light-400 dark:text-light-500;
+}
+
+@utility border-light800-dark300 {
+  @apply border-light-800 dark:border-dark-300;
+}
+
+@utility border-light700-dark400 {
+  @apply border-light-700 dark:border-dark-400;
+}
+
+@utility shadow-light10-dark100 {
+  @apply shadow-light-100 dark:shadow-dark-100;
+}
+
+@utility shadow-light100-darknone {
+  @apply shadow-light-100 dark:shadow-none;
+}

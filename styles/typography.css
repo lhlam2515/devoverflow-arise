@@ -1,0 +1,77 @@
+/* Typography */
+
+@utility h1-bold {
+  @apply text-3xl/[1.4] font-bold tracking-[-1px];
+}
+
+@utility h2-bold {
+  @apply text-2xl/[1.3] font-bold;
+}
+
+@utility h2-semibold {
+  @apply text-2xl/[1.3] font-semibold;
+}
+
+@utility h3-bold {
+  @apply text-xl/[1.3] font-bold;
+}
+
+@utility h3-semibold {
+  @apply text-xl/[1.24] font-semibold;
+}
+
+@utility base-medium {
+  @apply text-lg/[1.4] font-medium;
+}
+
+@utility base-semibold {
+  @apply text-lg/[1.4] font-semibold;
+}
+
+@utility base-bold {
+  @apply text-lg/[1.4] font-bold;
+}
+
+@utility p-regular {
+  @apply text-base/[1.4] font-normal;
+}
+
+@utility p-medium {
+  @apply text-base/[1.4] font-medium;
+}
+
+@utility p-semibold {
+  @apply text-base/[1.3] font-semibold;
+}
+
+@utility body-regular {
+  @apply text-sm/[1.4] font-normal;
+}
+
+@utility body-medium {
+  @apply text-sm/[1.3] font-medium;
+}
+
+@utility body-semibold {
+  @apply text-sm/[1.3] font-semibold;
+}
+
+@utility small-regular {
+  @apply text-xs/[1.3] font-normal;
+}
+
+@utility small-medium {
+  @apply text-xs/[1.3] font-medium;
+}
+
+@utility small-semibold {
+  @apply text-xs/[1.3] font-semibold;
+}
+
+@utility subtle-regular {
+  @apply text-[10px]/[1.3] font-normal;
+}
+
+@utility subtle-medium {
+  @apply text-[10px]/[1.3] font-medium;
+}
