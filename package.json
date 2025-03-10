@@ -41,5 +41,10 @@
   "overrides": {
     "react": "$react",
     "react-dom": "$react-dom"
+  },
+  "packageManager": "npm@11.2.0",
+  "overrides": {
+    "react": "$react",
+    "react-dom": "$react-dom"
   }
 }
