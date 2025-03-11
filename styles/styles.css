@@ -108,7 +108,7 @@
   @apply border-light-700 dark:border-dark-400;
 }
 
-@utility shadow-light10-dark100 {
+@utility shadow-light100-dark100 {
   @apply shadow-light-100 dark:shadow-dark-100;
 }
 

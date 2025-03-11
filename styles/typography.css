@@ -32,19 +32,19 @@
   @apply text-lg/[1.4] font-bold;
 }
 
-@utility p-regular {
+@utility paragraph-normal {
   @apply text-base/[1.4] font-normal;
 }
 
-@utility p-medium {
+@utility paragraph-medium {
   @apply text-base/[1.4] font-medium;
 }
 
-@utility p-semibold {
+@utility paragraph-semibold {
   @apply text-base/[1.3] font-semibold;
 }
 
-@utility body-regular {
+@utility body-normal {
   @apply text-sm/[1.4] font-normal;
 }
 
@@ -56,7 +56,7 @@
   @apply text-sm/[1.3] font-semibold;
 }
 
-@utility small-regular {
+@utility small-normal {
   @apply text-xs/[1.3] font-normal;
 }
 
@@ -68,7 +68,7 @@
   @apply text-xs/[1.3] font-semibold;
 }
 
-@utility subtle-regular {
+@utility subtle-normal {
   @apply text-[10px]/[1.3] font-normal;
 }
 
