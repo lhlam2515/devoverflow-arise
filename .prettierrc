@@ -6,5 +6,5 @@
   "jsxSingleQuote": false,
   "trailingComma": "es5",
   "arrowParens": "always",
-  "plugins": ["prettier-plugin-tabwindcss"]
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

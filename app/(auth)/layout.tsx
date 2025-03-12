@@ -5,7 +5,7 @@ import SocialAuthForm from "@/components/forms/SocialAuthForm";
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <main className="flex-center min-h-screen bg-auth-light dark:bg-auth-dark bg-cover bg-center bg-no-repeat px-4 py-10">
+    <main className="flex-center bg-auth-light dark:bg-auth-dark min-h-screen bg-cover bg-center bg-no-repeat px-4 py-10">
       <section className="border-light800-dark300 bg-light800-dark200 shadow-light100-dark100 min-w-full rounded-[10px] border px-4 py-10 shadow-md sm:min-w-[520px] sm:px-8">
         <div className="flex-between gap-2">
           <div className="space-y-2.5">

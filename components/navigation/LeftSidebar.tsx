@@ -9,7 +9,7 @@ import { Button } from "../ui/button";
 
 const LeftSidebar = () => {
   return (
-    <section className="custom-scrollbar bg-light900-dark200 border-light800-dark300 sticky top-0 left-0 h-screen flex flex-col justify-between overflow-y-auto border-r p-6 pt-36 shadow-light-300 dark:shadow-none max-sm:hidden lg:w-[266px]">
+    <section className="custom-scrollbar bg-light900-dark200 border-light800-dark300 shadow-light-300 sticky top-0 left-0 flex h-screen flex-col justify-between overflow-y-auto border-r p-6 pt-36 max-sm:hidden lg:w-[266px] dark:shadow-none">
       <div className="flex flex-1 flex-col gap-6">
         <NavLinks />
       </div>
