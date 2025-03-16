@@ -53,13 +53,13 @@ const Home = async ({ searchParams }: SearchParams) => {
   const { query = "", filter = "" } = await searchParams;
 
   const filteredQuestions = questions.filter((question) => {
-    const mathcesQuery = question.title
+    const matchesQuery = question.title
       .toLowerCase()
       .includes(query.toLowerCase());
     const matchesFilter = filter
       ? question.tags.some((tag) => tag.name.toLowerCase() === filter)
       : true;
-    return mathcesQuery && matchesFilter;
+    return matchesQuery && matchesFilter;
   });
 
   return (
