@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import QuestionCard from "@/components/cards/QuestionCard";
 import HomeFilter from "@/components/filters/HomeFilter";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
@@ -9,31 +10,38 @@ const questions = [
   {
     _id: "1",
     title: "How to use Next.js with TypeScript?",
-    description:
-      "I want to know how to set up a Next.js project with TypeScript.",
     tags: [
       { _id: "1", name: "Next.js" },
       { _id: "2", name: "TypeScript" },
     ],
-    author: { _id: "1", name: "John Doe" },
+    author: {
+      _id: "1",
+      name: "John Doe",
+      image:
+        "https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg",
+    },
+    createdAt: new Date(),
     upvotes: 10,
-    answer: 5,
+    answers: 5,
     views: 100,
-    date: new Date(),
   },
   {
     _id: "2",
     title: "How to manage state in React?",
-    description: "I want to know how to manage state in React using hooks.",
     tags: [
       { _id: "1", name: "React" },
       { _id: "2", name: "TypeScript" },
     ],
-    author: { _id: "1", name: "John Doe" },
+    author: {
+      _id: "1",
+      name: "John Doe",
+      image:
+        "https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg",
+    },
+    createdAt: new Date(),
     upvotes: 10,
-    answer: 5,
+    answers: 5,
     views: 100,
-    date: new Date(),
   },
 ];
 
@@ -77,7 +85,7 @@ const Home = async ({ searchParams }: SearchParams) => {
       <HomeFilter />
       <div className="mt-10 flex w-full flex-col gap-6">
         {filteredQuestions.map((question) => (
-          <h1 key={question._id}>{question.title}</h1>
+          <QuestionCard key={question._id} question={question} />
         ))}
       </div>
     </>
