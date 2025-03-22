@@ -38,10 +38,10 @@ export async function DELETE(
   try {
     await dbConnect();
 
-    const user = await Account.findByIdAndDelete(id);
-    if (!user) throw new NotFoundError("Account");
+    const account = await Account.findByIdAndDelete(id);
+    if (!account) throw new NotFoundError("Account");
 
-    return NextResponse.json({ success: true, data: user }, { status: 200 });
+    return NextResponse.json({ success: true, data: account }, { status: 200 });
   } catch (error) {
     return handlerError(error, "api") as APIErrorResponse;
   }

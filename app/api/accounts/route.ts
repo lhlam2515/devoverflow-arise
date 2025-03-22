@@ -11,9 +11,12 @@ export async function GET() {
   try {
     await dbConnect();
 
-    const users = await Account.find();
+    const accounts = await Account.find();
 
-    return NextResponse.json({ success: true, data: users }, { status: 200 });
+    return NextResponse.json(
+      { success: true, data: accounts },
+      { status: 200 }
+    );
   } catch (error) {
     return handlerError(error, "api") as APIErrorResponse;
   }
@@ -27,11 +30,11 @@ export async function POST(request: Request) {
 
     const validatedData = AccountSchema.parse(body);
 
-    const existingUser = await Account.findOne({
+    const existingAccount = await Account.findOne({
       provider: validatedData.provider,
       providerAccountId: validatedData.providerAccountId,
     });
-    if (existingUser)
+    if (existingAccount)
       throw new ForbiddenError(
         "An account with the same provider already exists"
       );
