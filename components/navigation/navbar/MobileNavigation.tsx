@@ -68,7 +68,7 @@ const MobileNavigation = async () => {
                 >
                   <Button
                     type="submit"
-                    className="base-medium w-fit cursor-pointer !bg-transparent px-4 py-3"
+                    className="base-medium! w-fit cursor-pointer bg-transparent! px-4 py-3"
                   >
                     <LogOut className="size-5 text-black dark:text-white" />
                     <span className="text-dark300-light900">Logout</span>
