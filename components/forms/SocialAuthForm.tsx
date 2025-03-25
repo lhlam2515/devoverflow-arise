@@ -27,10 +27,6 @@ const SocialAuthForm = () => {
           error instanceof Error
             ? error.message
             : "An error occured during sign-in",
-        action: {
-          label: "Dismiss",
-          onClick: () => toast.dismiss(),
-        },
       });
     }
   };
