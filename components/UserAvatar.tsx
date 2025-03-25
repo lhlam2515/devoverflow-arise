@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import { Avatar, AvatarFallback } from "./ui/avatar";
-
 import ROUTES from "@/constants/routes";
+
+import { Avatar, AvatarFallback } from "./ui/avatar";
 
 interface Props {
   id: string;
