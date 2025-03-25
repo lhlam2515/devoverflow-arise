@@ -25,10 +25,7 @@ const formatResponse = (
     : { status, ...responseContent };
 };
 
-const handlerError = (
-  error: unknown,
-  responseType: ResponseType = "server"
-) => {
+const handleError = (error: unknown, responseType: ResponseType = "server") => {
   if (error instanceof RequestError) {
     logger.error(
       { err: error },
@@ -67,4 +64,4 @@ const handlerError = (
   return formatResponse(responseType, 500, "An unexpected error occurred");
 };
 
-export default handlerError;
+export default handleError;

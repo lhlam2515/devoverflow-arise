@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import User from "@/database/user.model";
-import handlerError from "@/lib/handlers/error";
+import handleError from "@/lib/handlers/error";
 import { ValidationError } from "@/lib/http-errors";
 import dbConnect from "@/lib/mongoose";
 import { UserSchema } from "@/lib/validations";
@@ -15,7 +15,7 @@ export async function GET() {
 
     return NextResponse.json({ success: true, data: users }, { status: 200 });
   } catch (error) {
-    return handlerError(error, "api") as APIErrorResponse;
+    return handleError(error, "api") as APIErrorResponse;
   }
 }
 
@@ -43,6 +43,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true, data: newUser }, { status: 201 });
   } catch (error) {
-    return handlerError(error, "api") as APIErrorResponse;
+    return handleError(error, "api") as APIErrorResponse;
   }
 }

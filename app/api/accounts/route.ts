@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import Account from "@/database/account.model";
-import handlerError from "@/lib/handlers/error";
+import handleError from "@/lib/handlers/error";
 import { ForbiddenError } from "@/lib/http-errors";
 import dbConnect from "@/lib/mongoose";
 import { AccountSchema } from "@/lib/validations";
@@ -18,7 +18,7 @@ export async function GET() {
       { status: 200 }
     );
   } catch (error) {
-    return handlerError(error, "api") as APIErrorResponse;
+    return handleError(error, "api") as APIErrorResponse;
   }
 }
 
@@ -46,6 +46,6 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } catch (error) {
-    return handlerError(error, "api") as APIErrorResponse;
+    return handleError(error, "api") as APIErrorResponse;
   }
 }

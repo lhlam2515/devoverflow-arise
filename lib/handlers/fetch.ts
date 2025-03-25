@@ -1,7 +1,7 @@
 import { ActionResponse } from "@/types/global";
 
 import logger from "../logger";
-import handlerError from "./error";
+import handleError from "./error";
 import { RequestError } from "../http-errors";
 
 interface FetchOptions extends RequestInit {
@@ -56,6 +56,6 @@ export async function fetchHandler<T>(
       logger.error(`Error fetching ${url}: ${error.message}`);
     }
 
-    return handlerError(error) as ActionResponse<T>;
+    return handleError(error) as ActionResponse<T>;
   }
 }

@@ -2,14 +2,14 @@
 
 import mongoose from "mongoose";
 
-import action from "../handlers/action";
-import handlerError from "../handlers/error";
-import { AskQuestionSchema } from "../validations";
-
 import Question from "@/database/question.model";
 import TagQuestion from "@/database/tag-question.model";
 import Tag from "@/database/tag.model";
 import { ActionResponse, ErrorResponse } from "@/types/global";
+
+import action from "../handlers/action";
+import handleError from "../handlers/error";
+import { AskQuestionSchema } from "../validations";
 
 export async function createQuestion(
   params: CreateQuestionParams
@@ -21,7 +21,7 @@ export async function createQuestion(
   });
 
   if (validationResult instanceof Error) {
-    return handlerError(validationResult) as ErrorResponse;
+    return handleError(validationResult) as ErrorResponse;
   }
 
   const { title, content, tags } = validationResult.params!;
@@ -70,7 +70,7 @@ export async function createQuestion(
     return { success: true, data: JSON.parse(JSON.stringify(question)) };
   } catch (error) {
     await session.abortTransaction();
-    return handlerError(error) as ErrorResponse;
+    return handleError(error) as ErrorResponse;
   } finally {
     await session.endSession();
   }

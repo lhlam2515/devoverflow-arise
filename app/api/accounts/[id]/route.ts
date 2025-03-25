@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import Account from "@/database/account.model";
-import handlerError from "@/lib/handlers/error";
+import handleError from "@/lib/handlers/error";
 import { NotFoundError, ValidationError } from "@/lib/http-errors";
 import dbConnect from "@/lib/mongoose";
 import { AccountSchema } from "@/lib/validations";
@@ -23,7 +23,7 @@ export async function GET(
 
     return NextResponse.json({ success: true, data: account }, { status: 200 });
   } catch (error) {
-    return handlerError(error, "api") as APIErrorResponse;
+    return handleError(error, "api") as APIErrorResponse;
   }
 }
 
@@ -43,7 +43,7 @@ export async function DELETE(
 
     return NextResponse.json({ success: true, data: account }, { status: 200 });
   } catch (error) {
-    return handlerError(error, "api") as APIErrorResponse;
+    return handleError(error, "api") as APIErrorResponse;
   }
 }
 
@@ -75,6 +75,6 @@ export async function PUT(
       { status: 200 }
     );
   } catch (error) {
-    return handlerError(error, "api") as APIErrorResponse;
+    return handleError(error, "api") as APIErrorResponse;
   }
 }

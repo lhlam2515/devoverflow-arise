@@ -4,7 +4,7 @@ import slugify from "slugify";
 
 import Account from "@/database/account.model";
 import User from "@/database/user.model";
-import handlerError from "@/lib/handlers/error";
+import handleError from "@/lib/handlers/error";
 import { ValidationError } from "@/lib/http-errors";
 import dbConnect from "@/lib/mongoose";
 import { SigninWithOAuthSchema } from "@/lib/validations";
@@ -83,7 +83,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   } catch (error: unknown) {
     await session.abortTransaction();
-    return handlerError(error, "api") as APIErrorResponse;
+    return handleError(error, "api") as APIErrorResponse;
   } finally {
     session.endSession();
   }
