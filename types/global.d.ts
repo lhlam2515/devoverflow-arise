@@ -14,6 +14,7 @@ interface _Author {
 interface _Question {
   _id: string;
   title: string;
+  content: string;
   tags: _Tag[];
   author: _Author;
   createdAt: Date;
