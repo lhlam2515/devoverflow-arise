@@ -102,7 +102,7 @@ export async function editQuestion(
   try {
     const question = await Question.findById(questionId).populate("tags");
 
-    if (question) {
+    if (!question) {
       throw new Error("Question not found");
     }
 
