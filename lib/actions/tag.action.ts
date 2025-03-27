@@ -1,6 +1,5 @@
 import { FilterQuery } from "mongoose";
 
-import Question from "@/database/account.model";
 import Tag from "@/database/tag.model";
 import {
   PaginatedSearchParams,
@@ -29,7 +28,7 @@ export async function getTags(
   const skip = (page - 1) * pageSize;
   const limit = pageSize;
 
-  const filterQuery: FilterQuery<typeof Question> = {};
+  const filterQuery: FilterQuery<typeof Tag> = {};
 
   if (query) {
     filterQuery.$or = [
