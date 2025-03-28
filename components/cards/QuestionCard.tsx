@@ -3,13 +3,13 @@ import React from "react";
 
 import ROUTES from "@/constants/routes";
 import { getTimeStamp } from "@/lib/utils";
-import { Question, Tag } from "@/types/global";
+import { _Question, _Tag } from "@/types/global";
 
 import TagCard from "./TagCard";
 import Metric from "../Metric";
 
 interface Props {
-  question: Question;
+  question: _Question;
 }
 
 const QuestionCard = ({
@@ -32,7 +32,7 @@ const QuestionCard = ({
       </div>
 
       <div className="mt-3.5 flex w-full flex-wrap gap-2">
-        {tags.map((tag: Tag) => (
+        {tags.map((tag: _Tag) => (
           <TagCard key={tag._id} {...tag} compact />
         ))}
       </div>

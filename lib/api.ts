@@ -1,5 +1,6 @@
 import { IAccount } from "@/database/account.model";
 import { IUser } from "@/database/user.model";
+import { SignInWithOAuthParams } from "@/types/action";
 
 import { fetchHandler } from "./handlers/fetch";
 
