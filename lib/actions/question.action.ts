@@ -6,6 +6,11 @@ import Question, { IQuestionDoc } from "@/database/question.model";
 import TagQuestion from "@/database/tag-question.model";
 import Tag, { ITagDoc } from "@/database/tag.model";
 import {
+  CreateQuestionParams,
+  EditQuestionParams,
+  GetQuestionParams,
+} from "@/types/action";
+import {
   ActionResponse,
   _Question,
   ErrorResponse,
@@ -139,7 +144,7 @@ export async function editQuestion(
     if (tagsToAdd.length > 0) {
       for (const tag of tagsToAdd) {
         const existingTag = await Tag.findOneAndUpdate(
-          { name: { $regex: `^${tag}$`, $option: "i" } },
+          { name: { $regex: new RegExp(`^${tag}$`, "i") } },
           { $setOnInsert: { name: tag }, $inc: { questions: 1 } },
           { upsert: true, new: true, session }
         );
