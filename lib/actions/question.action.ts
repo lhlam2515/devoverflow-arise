@@ -9,6 +9,7 @@ import {
   CreateQuestionParams,
   EditQuestionParams,
   GetQuestionParams,
+  IncreaseViewsParams,
 } from "@/types/action";
 import {
   ActionResponse,
@@ -23,6 +24,7 @@ import {
   AskQuestionSchema,
   EditQuestionSchema,
   GetQuestionSchema,
+  IncreaseViewsSchema,
   PaginatedSearchParamsSchema,
 } from "../validations";
 
@@ -293,6 +295,37 @@ export async function getQuestions(
         isNext,
       },
     };
+  } catch (error) {
+    return handleError(error) as ErrorResponse;
+  }
+}
+
+export async function increaseViews(
+  params: IncreaseViewsParams
+): Promise<ActionResponse<{ views: number }>> {
+  const validationResult = await action({
+    params,
+    schema: IncreaseViewsSchema,
+  });
+
+  if (validationResult instanceof Error) {
+    return handleError(validationResult) as ErrorResponse;
+  }
+
+  const { questionId } = validationResult.params!;
+
+  try {
+    const question = await Question.findById(questionId);
+
+    if (!question) {
+      throw new Error("Question not found");
+    }
+
+    question.views += 1;
+
+    await question.save();
+
+    return { success: true, data: { views: question.views } };
   } catch (error) {
     return handleError(error) as ErrorResponse;
   }
