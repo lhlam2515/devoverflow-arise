@@ -1,4 +1,4 @@
-import { EMPTY_QUESTION } from "@/constants/states";
+import { EMPTY_ANSWERS } from "@/constants/states";
 import { _Answer, ActionResponse } from "@/types/global";
 
 import AnswerCard from "../cards/AnswerCard";
@@ -22,7 +22,7 @@ const AllAnswers = ({ data, success, error, totalAnswers }: Props) => {
         success={success}
         error={error}
         data={data}
-        empty={EMPTY_QUESTION}
+        empty={EMPTY_ANSWERS}
         render={(answers) =>
           answers.map((answer) => <AnswerCard key={answer._id} {...answer} />)
         }
