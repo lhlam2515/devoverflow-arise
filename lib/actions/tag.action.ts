@@ -1,7 +1,6 @@
 import { FilterQuery } from "mongoose";
 
-import { Question } from "@/database";
-import Tag from "@/database/tag.model";
+import { Question, Tag } from "@/database";
 import { GetTagQuestionsParams } from "@/types/action";
 import {
   PaginatedSearchParams,
