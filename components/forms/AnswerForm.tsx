@@ -76,10 +76,13 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
 
     setIsAISubmitting(true);
 
+    const userAnswer = editorRef.current?.getMarkdown() || "";
+
     try {
       const { success, data, error } = await api.ai.getAnswer(
         questionTitle,
-        questionContent
+        questionContent,
+        userAnswer
       );
 
       if (!success) {
