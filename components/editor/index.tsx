@@ -1,47 +1,48 @@
 "use client";
 
 import {
+  MDXEditor,
+  UndoRedo,
+  BoldItalicUnderlineToggles,
+  toolbarPlugin,
+  CodeToggle,
+  InsertCodeBlock,
+  codeBlockPlugin,
   headingsPlugin,
   listsPlugin,
+  linkPlugin,
   quotePlugin,
-  thematicBreakPlugin,
   markdownShortcutPlugin,
-  MDXEditor,
-  type MDXEditorMethods,
-  ConditionalContents,
-  ChangeCodeMirrorLanguage,
-  toolbarPlugin,
-  UndoRedo,
-  Separator,
-  BoldItalicUnderlineToggles,
   ListsToggle,
+  linkDialogPlugin,
   CreateLink,
   InsertImage,
-  InsertThematicBreak,
   InsertTable,
-  InsertCodeBlock,
-  linkPlugin,
-  linkDialogPlugin,
   tablePlugin,
   imagePlugin,
-  codeBlockPlugin,
   codeMirrorPlugin,
+  ConditionalContents,
+  ChangeCodeMirrorLanguage,
+  Separator,
+  InsertThematicBreak,
   diffSourcePlugin,
+  MDXEditorMethods,
+  thematicBreakPlugin,
 } from "@mdxeditor/editor";
 import { basicDark } from "cm6-theme-basic-dark";
 import { useTheme } from "next-themes";
-import type { ForwardedRef } from "react";
+import { Ref } from "react";
 
 import "@mdxeditor/editor/style.css";
 import "./dark-editor.css";
 
 interface Props {
   value: string;
+  editorRef: Ref<MDXEditorMethods> | null;
   fieldChange: (value: string) => void;
-  editorRef: ForwardedRef<MDXEditorMethods> | null;
 }
 
-const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
+const Editor = ({ value, editorRef, fieldChange }: Props) => {
   const { resolvedTheme } = useTheme();
 
   const theme = resolvedTheme === "dark" ? [basicDark] : [];
@@ -70,16 +71,15 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
             txt: "txt",
             sql: "sql",
             html: "html",
-            saas: "saas",
+            sass: "sass",
             scss: "scss",
             bash: "bash",
             json: "json",
             js: "javascript",
             ts: "typescript",
             "": "unspecified",
-            tsx: "Typescript (React)",
-            jsx: "Javascript (React)",
-            py: "python",
+            tsx: "TypeScript (React)",
+            jsx: "JavaScript (React)",
           },
           autoLoadLanguageSupport: true,
           codeMirrorExtensions: theme,
@@ -100,6 +100,7 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
                       <Separator />
 
                       <BoldItalicUnderlineToggles />
+                      <CodeToggle />
                       <Separator />
 
                       <ListsToggle />
@@ -122,7 +123,6 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
           ),
         }),
       ]}
-      {...props}
     />
   );
 };
