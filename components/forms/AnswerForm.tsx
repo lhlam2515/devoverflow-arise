@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { createAnswer } from "@/lib/actions/answer.action";
 import { api } from "@/lib/api";
+import { extractOuterMarkdownContent } from "@/lib/utils";
 import { AnswerSchema } from "@/lib/validations";
 
 import { Button } from "../ui/button";
@@ -91,7 +92,8 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
         });
       }
 
-      const formattedAnswer = data.replace(/<br>/g, " ").toString().trim();
+      const answer = extractOuterMarkdownContent(data) || data;
+      const formattedAnswer = answer.replace(/<br>/g, " ").toString().trim();
 
       if (editorRef.current) {
         editorRef.current.setMarkdown(formattedAnswer);
