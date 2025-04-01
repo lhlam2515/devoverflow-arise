@@ -67,3 +67,15 @@ interface _Collection {
   author: string | _Author;
   question: _Question;
 }
+
+interface _User {
+  _id: string;
+  name: string;
+  username: string;
+  email: string;
+  bio?: string;
+  image?: string;
+  portfolio?: string;
+  location?: string;
+  reputation?: number;
+}
