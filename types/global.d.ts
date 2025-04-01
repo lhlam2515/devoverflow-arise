@@ -58,4 +58,6 @@ interface _Answer {
   author: _Author;
   content: string;
   createdAt: Date;
+  upvotes: number;
+  downvotes: number;
 }
