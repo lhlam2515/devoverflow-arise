@@ -3,12 +3,21 @@
 import mongoose, { ClientSession } from "mongoose";
 
 import { Answer, Question, Vote } from "@/database";
-import { CreateVoteParams, UpdateVoteCountParams } from "@/types/action";
+import {
+  CreateVoteParams,
+  HasVotedParams,
+  HasVotedResponse,
+  UpdateVoteCountParams,
+} from "@/types/action";
 import { ActionResponse, ErrorResponse } from "@/types/global";
 
 import action from "../handlers/action";
 import handleError from "../handlers/error";
-import { CreateVoteSchema, UpdateVoteCountSchema } from "../validations";
+import {
+  CreateVoteSchema,
+  HasVotedSchema,
+  UpdateVoteCountSchema,
+} from "../validations";
 
 export async function updateVoteCount(
   params: UpdateVoteCountParams,
@@ -42,6 +51,7 @@ export async function updateVoteCount(
     return handleError(error) as ErrorResponse;
   }
 }
+
 export async function createVote(
   params: CreateVoteParams
 ): Promise<ActionResponse> {
@@ -107,5 +117,47 @@ export async function createVote(
     return handleError(error) as ErrorResponse;
   } finally {
     await session.endSession();
+  }
+}
+
+export async function hasVoted(
+  params: HasVotedParams
+): Promise<ActionResponse<HasVotedResponse>> {
+  const validationResult = await action({
+    params,
+    schema: HasVotedSchema,
+    authorize: true,
+  });
+
+  if (validationResult instanceof Error) {
+    return handleError(validationResult) as ErrorResponse;
+  }
+
+  const { targetId, targetType } = validationResult.params!;
+  const userId = validationResult.session?.user?.id;
+
+  try {
+    const vote = await Vote.findOne({
+      author: userId,
+      actionId: targetId,
+      actionType: targetType,
+    });
+
+    if (!vote) {
+      return {
+        success: true,
+        data: { hasUpvoted: false, hasDownvoted: false },
+      };
+    }
+
+    return {
+      success: true,
+      data: {
+        hasUpvoted: vote.voteType === "upvote",
+        hasDownvoted: vote.voteType === "downvote",
+      },
+    };
+  } catch (error) {
+    return handleError(error) as ErrorResponse;
   }
 }
