@@ -65,5 +65,5 @@ interface _Answer {
 interface _Collection {
   _id: string;
   author: string | _Author;
-  quesiton: _Question;
+  question: _Question;
 }

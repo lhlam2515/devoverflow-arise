@@ -10,7 +10,7 @@ interface SearchParams {
 }
 
 const Collections = async ({ searchParams }: SearchParams) => {
-  const { page = 1, pageSize = 1, query, filter } = await searchParams;
+  const { page, pageSize, query, filter } = await searchParams;
 
   const { success, data, error } = await getSavedQuestions({
     page: Number(page) || 1,
@@ -29,7 +29,7 @@ const Collections = async ({ searchParams }: SearchParams) => {
         <LocalSearch
           route={ROUTES.COLLECTION}
           imgSrc="/icons/search.svg"
-          placeholder="Search quesitons..."
+          placeholder="Search questions..."
           otherClasses="flex-1"
         />
       </div>
@@ -42,7 +42,7 @@ const Collections = async ({ searchParams }: SearchParams) => {
         render={(collection) => (
           <div className="mt-10 flex w-full flex-col gap-6">
             {collection.map((item) => (
-              <QuestionCard key={item._id} question={item.quesiton} />
+              <QuestionCard key={item._id} question={item.question} />
             ))}
           </div>
         )}
