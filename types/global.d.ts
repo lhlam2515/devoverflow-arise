@@ -61,3 +61,9 @@ interface _Answer {
   upvotes: number;
   downvotes: number;
 }
+
+interface _Collection {
+  _id: string;
+  author: string | _Author;
+  quesiton: _Question;
+}
