@@ -55,7 +55,7 @@ const SaveQuestion = ({ questionId, hasSaveQuestionPromise }: Props) => {
       width={18}
       height={18}
       alt="save"
-      className={`cursor-poiner ${isLoading && "opacity-50"}`}
+      className={`cursor-pointer ${isLoading && "opacity-50"}`}
       aria-label="save question"
       onClick={handleSave}
     />
