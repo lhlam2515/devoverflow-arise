@@ -13,7 +13,7 @@ import UserAvatar from "@/components/UserAvatar";
 import Votes from "@/components/votes/Votes";
 import ROUTES from "@/constants/routes";
 import { getAnswers } from "@/lib/actions/answer.action";
-import { hasSaveQuetion } from "@/lib/actions/collection.action";
+import { hasSaveQuestion } from "@/lib/actions/collection.action";
 import { getQuestion, increaseViews } from "@/lib/actions/question.action";
 import { hasVoted } from "@/lib/actions/vote.action";
 import { formatNumber, getTimeStamp } from "@/lib/utils";
@@ -46,7 +46,7 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
     targetType: "question",
   });
 
-  const hasSaveQuestionPromise = hasSaveQuetion({
+  const hasSaveQuestionPromise = hasSaveQuestion({
     questionId: question._id,
   });
 

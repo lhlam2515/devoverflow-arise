@@ -72,7 +72,7 @@ export async function toggleSaveQuestion(
   }
 }
 
-export async function hasSaveQuetion(
+export async function hasSaveQuestion(
   params: CollectionBaseParams
 ): Promise<ActionResponse<{ saved: boolean }>> {
   const validationResult = await action({
