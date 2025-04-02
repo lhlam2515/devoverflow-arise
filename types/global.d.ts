@@ -79,4 +79,5 @@ interface _User {
   portfolio?: string;
   location?: string;
   reputation?: number;
+  createdAt: Date;
 }
