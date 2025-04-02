@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import AnswerCard from "@/components/cards/AnswerCard";
 import QuestionCard from "@/components/cards/QuestionCard";
+import TagCard from "@/components/cards/TagCard";
 import DataRenderer from "@/components/DataRenderer";
 import Pagination from "@/components/Pagination";
 import { Button } from "@/components/ui/button";
@@ -12,11 +13,12 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import ProfileLink from "@/components/user/ProfileLink";
 import Stats from "@/components/user/Stats";
 import UserAvatar from "@/components/UserAvatar";
-import { EMPTY_ANSWERS, EMPTY_QUESTION } from "@/constants/states";
+import { EMPTY_ANSWERS, EMPTY_QUESTION, EMPTY_TAGS } from "@/constants/states";
 import {
   getUser,
   getUserAnswers,
   getUserQuestions,
+  getUserTopTags,
 } from "@/lib/actions/user.action";
 import { RouteParams } from "@/types/global";
 
@@ -43,9 +45,9 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
     user;
 
   const {
-    success: userQuestionSuccess,
+    success: userQuestionsSuccess,
     data: userQuestions,
-    error: userQuestionError,
+    error: userQuestionsError,
   } = await getUserQuestions({
     userId: id,
     page: Number(page) || 1,
@@ -53,17 +55,26 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
   });
 
   const {
-    success: userAnswerSuccess,
+    success: userAnswersSuccess,
     data: userAnswers,
-    error: userAnswerError,
+    error: userAnswersError,
   } = await getUserAnswers({
     userId: id,
     page: Number(page) || 1,
     pageSize: Number(pageSize) || 10,
   });
 
+  const {
+    success: userTopTagsSuccess,
+    data: userTopTags,
+    error: userTopTagsError,
+  } = await getUserTopTags({
+    userId: id,
+  });
+
   const { questions, isNext: hasMoreQuestions } = userQuestions!;
   const { answers, isNext: hasMoreAnswers } = userAnswers!;
+  const { tags } = userTopTags!;
 
   return (
     <>
@@ -145,8 +156,8 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
             className="mt-5 flex w-full flex-col gap-6"
           >
             <DataRenderer
-              success={userQuestionSuccess}
-              error={userQuestionError}
+              success={userQuestionsSuccess}
+              error={userQuestionsError}
               data={questions}
               empty={EMPTY_QUESTION}
               render={(questions) => (
@@ -166,8 +177,8 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
             className="mt-5 flex w-full flex-col gap-6"
           >
             <DataRenderer
-              success={userAnswerSuccess}
-              error={userAnswerError}
+              success={userAnswersSuccess}
+              error={userAnswersError}
               data={answers}
               empty={EMPTY_ANSWERS}
               render={(answers) => (
@@ -192,7 +203,26 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
         <div className="flex w-full min-w-[250px] flex-1 flex-col max-lg:hidden">
           <h3 className="h3-bold text-dark200-light900">Tog Tech</h3>
           <div className="mt-7 flex flex-col gap-4">
-            <p>List of Tags</p>
+            <DataRenderer
+              success={userTopTagsSuccess}
+              error={userTopTagsError}
+              data={tags}
+              empty={EMPTY_TAGS}
+              render={(tags) => (
+                <div className="flex w-full flex-col gap-6">
+                  {tags.map((tag) => (
+                    <TagCard
+                      key={tag._id}
+                      _id={tag._id}
+                      name={tag.name}
+                      questions={tag.count}
+                      showCount
+                      compact
+                    />
+                  ))}
+                </div>
+              )}
+            />
           </div>
         </div>
       </section>
