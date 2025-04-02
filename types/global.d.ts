@@ -61,6 +61,7 @@ interface _Answer {
   createdAt: Date;
   upvotes: number;
   downvotes: number;
+  question: string;
 }
 
 interface _Collection {
