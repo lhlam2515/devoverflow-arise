@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 interface _Tag {
   _id: string;
   name: string;
+  question?: string;
 }
 
 interface _Author {
