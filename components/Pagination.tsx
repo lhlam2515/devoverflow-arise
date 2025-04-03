@@ -40,7 +40,7 @@ const Pagination = ({ page = 1, isNext, containerClasses }: Props) => {
       {/* Previous Page Button */}
       {Number(page) > 1 && (
         <Button
-          className="border-light700-dark400! btn-primary! min-h[36px] flex items-center justify-center gap-2 border"
+          className="border-light700-dark400 btn-primary! min-h[36px] flex cursor-pointer items-center justify-center gap-2 border"
           onClick={() => handleNavigation("prev")}
         >
           <p className="body-medium text-dark200-light800">Prev</p>
@@ -54,7 +54,7 @@ const Pagination = ({ page = 1, isNext, containerClasses }: Props) => {
       {/* Next Page Button */}
       {isNext && (
         <Button
-          className="border-light700-dark400! btn-primary! min-h[36px] flex items-center justify-center gap-2 border"
+          className="border-light700-dark400 btn-primary! min-h[36px] flex cursor-pointer items-center justify-center gap-2 border"
           onClick={() => handleNavigation("next")}
         >
           <p className="body-medium text-dark200-light800">Next</p>

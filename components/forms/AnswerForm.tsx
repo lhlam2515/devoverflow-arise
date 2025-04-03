@@ -169,7 +169,7 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
           <div className="flex justify-end">
             <Button
               type="submit"
-              className="bg-primary-gradient w-fit cursor-pointer"
+              className="bg-primary-gradient text-light-900 w-fit cursor-pointer"
             >
               {isAnswering ? (
                 <>

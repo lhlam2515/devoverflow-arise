@@ -52,7 +52,7 @@ const CommonFilter = ({
       >
         <SelectTrigger
           className={cn(
-            "body-normal! no-focus border-light800-dark300! bg-light800-dark300! text-dark500-light700! border px-5 py-2.5",
+            "body-normal no-focus! border-light800-dark300 bg-light800-dark300! text-dark500-light700! border px-5 py-2.5",
             otherClasses
           )}
           aria-label="Filter options"

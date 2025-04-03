@@ -41,8 +41,8 @@ const LeftSidebar = async () => {
         ) : (
           <>
             <Button
-              asChild
               className="small-medium! btn-secondary! min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none"
+              asChild
             >
               <Link href={ROUTES.SIGN_IN}>
                 <Image
@@ -59,8 +59,8 @@ const LeftSidebar = async () => {
             </Button>
 
             <Button
+              className="small-medium! btn-tertiary! border-light700-dark400 text-dark400-light900 min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none"
               asChild
-              className="small-medium! btn-tertiary! border-light700-dark400 text-dark400-light900! min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none"
             >
               <Link href={ROUTES.SIGN_UP}>
                 <Image

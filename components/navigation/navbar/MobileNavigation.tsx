@@ -33,7 +33,7 @@ const MobileNavigation = async () => {
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="bg-light900-dark200! border-none px-4 py-3"
+        className="bg-light900-dark200 border-none px-4 py-3"
       >
         <SheetTitle className="hidden">Navigation</SheetTitle>
         <Link href="/" className="flex items-center gap-1">
@@ -78,19 +78,23 @@ const MobileNavigation = async () => {
             ) : (
               <>
                 <SheetClose asChild>
-                  <Link href={ROUTES.SIGN_IN}>
-                    <Button className="small-medium! btn-secondary! min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
+                  <Button
+                    className="small-medium! btn-secondary! min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none"
+                    asChild
+                  >
+                    <Link href={ROUTES.SIGN_IN}>
                       <span className="text-primary-gradient">Log In</span>
-                    </Button>
-                  </Link>
+                    </Link>
+                  </Button>
                 </SheetClose>
 
                 <SheetClose asChild>
-                  <Link href={ROUTES.SIGN_UP}>
-                    <Button className="small-medium! btn-tertiary! border-light700-dark400 text-dark400-light900! min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none">
-                      Sign Up
-                    </Button>
-                  </Link>
+                  <Button
+                    className="small-medium! btn-tertiary! border-light700-dark400 text-dark400-light900 min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none"
+                    asChild
+                  >
+                    <Link href={ROUTES.SIGN_UP}>Sign Up</Link>
+                  </Button>
                 </SheetClose>
               </>
             )}

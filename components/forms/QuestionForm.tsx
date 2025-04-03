@@ -147,11 +147,11 @@ const QuestionForm = ({ question, isEdit = false }: Props) => {
               </FormLabel>
               <FormControl>
                 <Input
-                  className="paragraph-normal! bg-light700-dark300! border-light700-dark400! text-dark300-light700 no-focus! min-h-[56px] border"
+                  className="paragraph-normal bg-light700-dark300! border-light700-dark400 text-dark300-light700 no-focus! min-h-[56px] border"
                   {...field}
                 />
               </FormControl>
-              <FormDescription className="body-normal! text-light-500! mt-2.5">
+              <FormDescription className="body-normal text-light-500 mt-2.5">
                 Be specific and imagine you&apos;re asking a question to another
                 person.
               </FormDescription>
@@ -175,7 +175,7 @@ const QuestionForm = ({ question, isEdit = false }: Props) => {
                   fieldChange={field.onChange}
                 />
               </FormControl>
-              <FormDescription className="body-normal! text-light-500! mt-2.5">
+              <FormDescription className="body-normal text-light-500 mt-2.5">
                 Introduce the problem and expand on what you&apos;ve tried.
               </FormDescription>
               <FormMessage />
@@ -193,7 +193,7 @@ const QuestionForm = ({ question, isEdit = false }: Props) => {
               <FormControl>
                 <div>
                   <Input
-                    className="paragraph-normal! bg-light700-dark300! border-light700-dark400! text-dark300-light700 no-focus! min-h-[56px] border"
+                    className="paragraph-normal bg-light700-dark300! border-light700-dark400 text-dark300-light700 no-focus! min-h-[56px] border"
                     placeholder="Add tags..."
                     onKeyDown={(e) => handleInputKeyDown(e, field)}
                   />
@@ -214,7 +214,7 @@ const QuestionForm = ({ question, isEdit = false }: Props) => {
                   )}
                 </div>
               </FormControl>
-              <FormDescription className="body-normal! text-light-500! mt-2.5">
+              <FormDescription className="body-normal text-light-500 mt-2.5">
                 Add up to 3 tags to describe what your question is about. You
                 need to press enter to add a tag.
               </FormDescription>
@@ -227,7 +227,7 @@ const QuestionForm = ({ question, isEdit = false }: Props) => {
           <Button
             type="submit"
             disabled={isPending}
-            className="bg-primary-gradient text-light-900! w-fit"
+            className="bg-primary-gradient text-light-900 w-fit cursor-pointer"
           >
             {isPending ? (
               <>

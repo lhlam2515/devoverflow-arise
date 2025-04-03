@@ -76,7 +76,7 @@ const LocalSearch = ({
         placeholder={placeholder}
         value={searchQuery}
         onChange={(event) => setSearchQuery(event.target.value)}
-        className="paragraph-normal! no-focus! placeholder text-dark400-light700 border-none shadow-none outline-none"
+        className="paragraph-normal no-focus! placeholder text-dark400-light700 border-none shadow-none outline-none"
       />
 
       {iconPosition === "right" && (

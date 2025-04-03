@@ -46,7 +46,7 @@ const NavLinks = ({
               alt={item.label}
               width={20}
               height={20}
-              className={cn({ "invert-colors": !isActive })}
+              className={cn({ "invert-colors": !isActive }, "object-cover")}
             />
             <p
               className={cn(

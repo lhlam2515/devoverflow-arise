@@ -89,7 +89,7 @@ const AuthForm = <T extends FieldValues>({
                     required
                     type={field.name === "password" ? "password" : "text"}
                     {...field}
-                    className="paragraph-normal! bg-light900-dark300! border-light700-dark400! text-dark300-light700 no-focus! min-h-12 rounded-sm border"
+                    className="paragraph-normal bg-light900-dark300! border-light700-dark400 text-dark300-light700 no-focus! min-h-12 rounded-sm border"
                   />
                 </FormControl>
                 <FormMessage />
@@ -100,7 +100,7 @@ const AuthForm = <T extends FieldValues>({
 
         <Button
           disabled={form.formState.isSubmitting}
-          className="bg-primary-gradient paragraph-medium! font-inter text-light-900! min-h-12 w-full cursor-pointer rounded-lg px-4 py-3"
+          className="bg-primary-gradient paragraph-medium! font-inter text-light-900 min-h-12 w-full cursor-pointer rounded-lg px-4 py-3"
         >
           {form.formState.isSubmitting
             ? buttonText === "Sign In"

@@ -39,7 +39,7 @@ const HomeFilter = () => {
         <Button
           key={filter.name}
           className={cn(
-            `body-medium rounded-lg px-6 py-3 capitalize shadow-none`,
+            `body-medium cursor-pointer rounded-lg px-6 py-3 capitalize shadow-none`,
             paramsFilter === filter.value
               ? "bg-primary-100 text-primary-500 hover:bg-primary-100 dark:bg-dark-400 dark:text-primary-500 dark:hover:bg-dark-400"
               : "bg-light-800 dark:bg-dark-400 text-dark-500 dark:text-light-500 hover:bg-light-800 dark:hover:bg-dark-300"
