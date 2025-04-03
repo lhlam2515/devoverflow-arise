@@ -44,33 +44,29 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
   const { _id, name, username, image, bio, portfolio, location, createdAt } =
     user;
 
-  const {
-    success: userQuestionsSuccess,
-    data: userQuestions,
-    error: userQuestionsError,
-  } = await getUserQuestions({
-    userId: id,
-    page: Number(page) || 1,
-    pageSize: Number(pageSize) || 10,
-  });
-
-  const {
-    success: userAnswersSuccess,
-    data: userAnswers,
-    error: userAnswersError,
-  } = await getUserAnswers({
-    userId: id,
-    page: Number(page) || 1,
-    pageSize: Number(pageSize) || 10,
-  });
-
-  const {
-    success: userTopTagsSuccess,
-    data: userTopTags,
-    error: userTopTagsError,
-  } = await getUserTopTags({
-    userId: id,
-  });
+  const [
+    {
+      success: userQuestionsSuccess,
+      data: userQuestions,
+      error: userQuestionsError,
+    },
+    { success: userAnswersSuccess, data: userAnswers, error: userAnswersError },
+    { success: userTopTagsSuccess, data: userTopTags, error: userTopTagsError },
+  ] = await Promise.all([
+    getUserQuestions({
+      userId: id,
+      page: Number(page) || 1,
+      pageSize: Number(pageSize) || 10,
+    }),
+    getUserAnswers({
+      userId: id,
+      page: Number(page) || 1,
+      pageSize: Number(pageSize) || 10,
+    }),
+    getUserTopTags({
+      userId: id,
+    }),
+  ]);
 
   const { questions, isNext: hasMoreQuestions } = userQuestions!;
   const { answers, isNext: hasMoreAnswers } = userAnswers!;
