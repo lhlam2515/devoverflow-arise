@@ -1,3 +1,7 @@
+import mongoose from "mongoose";
+
+import { IInteractionDoc } from "@/database/interaction.model";
+
 import { PaginatedSearchParams } from "./global";
 
 interface SignInWithOAuthParams {
@@ -86,4 +90,26 @@ interface GetUserAnswersParams
 
 interface GetUserTagsParams {
   userId: string;
+}
+
+interface CreateInteractionParams {
+  action:
+    | "view"
+    | "upvote"
+    | "downvote"
+    | "bookmark"
+    | "post"
+    | "edit"
+    | "delete"
+    | "search";
+  actionTarget: "question" | "answer";
+  actionId: string;
+  authorId: string;
+}
+
+interface UpdateReputationParams {
+  interaction: IInteractionDoc;
+  session: mongoose.ClientSession;
+  performerId: string;
+  authorId: string;
 }
