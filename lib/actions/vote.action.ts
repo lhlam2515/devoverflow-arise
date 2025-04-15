@@ -165,6 +165,7 @@ export async function hasVoted(
   const validationResult = await action({
     params,
     schema: HasVotedSchema,
+    authorize: true,
   });
 
   if (validationResult instanceof Error) {
