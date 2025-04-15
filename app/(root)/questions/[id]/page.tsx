@@ -14,6 +14,7 @@ import Votes from "@/components/votes/Votes";
 import ROUTES from "@/constants/routes";
 import { getAnswers } from "@/lib/actions/answer.action";
 import { hasSaveQuestion } from "@/lib/actions/collection.action";
+import { createInteraction } from "@/lib/actions/interaction.action";
 import { getQuestion, increaseViews } from "@/lib/actions/question.action";
 import { hasVoted } from "@/lib/actions/vote.action";
 import { formatNumber, getTimeStamp } from "@/lib/utils";
@@ -29,6 +30,13 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
   });
 
   if (!success || !question) return redirect("/404");
+
+  await createInteraction({
+    action: "view",
+    actionTarget: "question",
+    actionId: question._id,
+    authorId: question.author._id,
+  });
 
   const {
     success: areAnswersLoaded,

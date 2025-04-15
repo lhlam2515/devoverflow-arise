@@ -2,6 +2,7 @@
 
 import mongoose, { PipelineStage } from "mongoose";
 import { revalidatePath } from "next/cache";
+import { after } from "next/server";
 
 import ROUTES from "@/constants/routes";
 import { Collection, Question } from "@/database";
@@ -19,6 +20,7 @@ import {
   CollectionBaseSchema,
   PaginatedSearchParamsSchema,
 } from "../validations";
+import { createInteraction } from "./interaction.action";
 
 export async function toggleSaveQuestion(
   params: CollectionBaseParams
@@ -59,6 +61,15 @@ export async function toggleSaveQuestion(
     await Collection.create({
       question: questionId,
       author: userId,
+    });
+
+    after(async () => {
+      await createInteraction({
+        action: "bookmark",
+        actionTarget: "question",
+        actionId: questionId,
+        authorId: question.author.toString(),
+      });
     });
 
     revalidatePath(ROUTES.QUESTION(questionId));
