@@ -120,3 +120,7 @@ interface RecommendationParams {
   skip: number;
   limit: number;
 }
+
+interface DeleteQuestionParams {
+  questionId: string;
+}

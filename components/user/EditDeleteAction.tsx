@@ -14,6 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { deleteQuestion } from "@/lib/actions/question.action";
 
 interface Props {
   type: "question" | "answer";
@@ -29,7 +30,7 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
 
   const handleDelete = async () => {
     if (type === "question") {
-      // Todo: Call API to delete question
+      await deleteQuestion({ questionId: itemId });
 
       toast.success("Question deleted successfully");
     } else if (type === "answer") {
