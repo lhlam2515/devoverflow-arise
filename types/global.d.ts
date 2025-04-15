@@ -25,6 +25,12 @@ interface _Question {
   views: number;
 }
 
+interface Badges {
+  GOLD: number;
+  SILVER: number;
+  BRONZE: number;
+}
+
 type ActionResponse<T = null> = {
   success: boolean;
   data?: T;
