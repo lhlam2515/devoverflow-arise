@@ -5,14 +5,22 @@ import { revalidatePath } from "next/cache";
 import { after } from "next/server";
 
 import ROUTES from "@/constants/routes";
-import { Question } from "@/database";
+import { Question, Vote } from "@/database";
 import Answer, { IAnswerDoc } from "@/database/answer.model";
-import { CreateAnswerParams, GetAnswersParams } from "@/types/action";
+import {
+  CreateAnswerParams,
+  DeleteAnswerParams,
+  GetAnswersParams,
+} from "@/types/action";
 import { _Answer, ActionResponse, ErrorResponse } from "@/types/global";
 
 import action from "../handlers/action";
 import handleError from "../handlers/error";
-import { CreateAnswerSchema, GetAnswersSchema } from "../validations";
+import {
+  CreateAnswerSchema,
+  DeleteAnswerSchema,
+  GetAnswersSchema,
+} from "../validations";
 import { createInteraction } from "./interaction.action";
 
 export async function createAnswer(
@@ -145,5 +153,58 @@ export async function getAnswers(
     };
   } catch (error) {
     return handleError(error) as ErrorResponse;
+  }
+}
+
+export async function deleteAnswer(
+  params: DeleteAnswerParams
+): Promise<ActionResponse> {
+  const validationResult = await action({
+    params,
+    schema: DeleteAnswerSchema,
+    authorize: true,
+  });
+
+  if (validationResult instanceof Error) {
+    return handleError(validationResult) as ErrorResponse;
+  }
+
+  const { answerId } = validationResult.params!;
+  const userId = validationResult?.session?.user?.id;
+
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
+  try {
+    const answer = await Answer.findById(answerId).session(session);
+    if (!answer) throw new Error("Answer not found.");
+
+    if (answer.author.toString() !== userId) {
+      throw new Error("You are not allowed to delete this answer.");
+    }
+
+    await Question.findByIdAndUpdate(
+      answer.question,
+      { $inc: { answers: -1 } },
+      { session }
+    );
+
+    await Vote.deleteMany(
+      { actionId: answerId, actionType: "answer" },
+      { session }
+    );
+
+    await Answer.findByIdAndDelete(answerId, { session });
+
+    await session.commitTransaction();
+
+    revalidatePath(`/profile/${userId}`);
+
+    return { success: true };
+  } catch (error) {
+    await session.abortTransaction();
+    return handleError(error) as ErrorResponse;
+  } finally {
+    await session.endSession();
   }
 }

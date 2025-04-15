@@ -124,3 +124,7 @@ interface RecommendationParams {
 interface DeleteQuestionParams {
   questionId: string;
 }
+
+interface DeleteAnswerParams {
+  answerId: string;
+}
