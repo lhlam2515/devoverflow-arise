@@ -128,3 +128,8 @@ interface DeleteQuestionParams {
 interface DeleteAnswerParams {
   answerId: string;
 }
+
+interface JobFilterParams {
+  query: string;
+  page: string;
+}
