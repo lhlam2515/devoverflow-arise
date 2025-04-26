@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -22,6 +23,25 @@ import {
   getUserTopTags,
 } from "@/lib/actions/user.action";
 import { RouteParams } from "@/types/global";
+
+export async function generateMetadata({
+  params,
+}: RouteParams): Promise<Metadata> {
+  const { id } = await params;
+
+  const { success, data } = await getUser({ userId: id });
+
+  if (!success || !data?.user) return {};
+
+  const { name, username, bio } = data.user;
+
+  return {
+    title: `${name} (${username}) | DevOverflow Profile`,
+    description: bio
+      ? bio.slice(0, 160)
+      : `Check out ${name}'s contributions and expertise on DevOverflow. View their questions, answers, and achievements in the developer community.`,
+  };
+}
 
 const Profile = async ({ params, searchParams }: RouteParams) => {
   const { id } = await params;

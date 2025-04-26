@@ -1,6 +1,7 @@
 "use server";
 
 import mongoose, { FilterQuery, PipelineStage } from "mongoose";
+import { cache } from "react";
 
 import { Answer, Question, User } from "@/database";
 import {
@@ -93,37 +94,35 @@ export async function getUsers(
   }
 }
 
-export async function getUser(params: GetUserParams): Promise<
-  ActionResponse<{
-    user: _User;
-  }>
-> {
-  const validationResult = await action({
-    params,
-    schema: GetUserSchema,
-  });
+export const getUser = cache(
+  async (params: GetUserParams): Promise<ActionResponse<{ user: _User }>> => {
+    const validationResult = await action({
+      params,
+      schema: GetUserSchema,
+    });
 
-  if (validationResult instanceof Error) {
-    return handleError(validationResult) as ErrorResponse;
+    if (validationResult instanceof Error) {
+      return handleError(validationResult) as ErrorResponse;
+    }
+
+    const { userId } = validationResult.params!;
+
+    try {
+      const user = await User.findById(userId);
+
+      if (!user) throw new Error("User not found");
+
+      return {
+        success: true,
+        data: {
+          user: JSON.parse(JSON.stringify(user)),
+        },
+      };
+    } catch (error) {
+      return handleError(error) as ErrorResponse;
+    }
   }
-
-  const { userId } = validationResult.params!;
-
-  try {
-    const user = await User.findById(userId);
-
-    if (!user) throw new Error("User not found");
-
-    return {
-      success: true,
-      data: {
-        user: JSON.parse(JSON.stringify(user)),
-      },
-    };
-  } catch (error) {
-    return handleError(error) as ErrorResponse;
-  }
-}
+);
 
 export async function getUserQuestions(params: GetUserQuestionsParams): Promise<
   ActionResponse<{

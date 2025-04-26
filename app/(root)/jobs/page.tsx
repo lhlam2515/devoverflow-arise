@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import JobCard from "@/components/cards/JobCard";
 import JobsFilter from "@/components/filters/JobFilter";
 import Pagination from "@/components/Pagination";
@@ -7,6 +9,12 @@ import {
   fetchLocation,
 } from "@/lib/actions/job.action";
 import { RouteParams, Job } from "@/types/global";
+
+export const metadata: Metadata = {
+  title: "DevOverflow | Jobs",
+  description:
+    "Explore a wide range of job opportunities in the tech industry. Find your dream job, connect with top companies, and advance your career.",
+};
 
 const Page = async ({ searchParams }: RouteParams) => {
   const { query, location, page } = await searchParams;

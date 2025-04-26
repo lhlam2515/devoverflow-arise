@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import QuestionCard from "@/components/cards/QuestionCard";
 import DataRenderer from "@/components/DataRenderer";
 import CommonFilter from "@/components/filters/CommonFilter";
@@ -7,6 +9,12 @@ import { CollectionFilters } from "@/constants/filters";
 import ROUTES from "@/constants/routes";
 import { EMPTY_COLLECTIONS } from "@/constants/states";
 import { getSavedQuestions } from "@/lib/actions/collection.action";
+
+export const metadata: Metadata = {
+  title: "DevOverflow | Collection",
+  description:
+    "Access your personal collection of saved questions on DevOverflow. Easily find and revisit the programming topics and solutions you've bookmarked for future reference.",
+};
 
 interface SearchParams {
   searchParams: Promise<{ [key: string]: string }>;

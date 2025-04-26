@@ -1,8 +1,14 @@
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import React from "react";
 
 import { auth } from "@/auth";
 import QuestionForm from "@/components/forms/QuestionForm";
+
+export const metadata: Metadata = {
+  title: "DevOverflow | Ask a Question",
+  description:
+    "Ask the developer community for help. Post your programming questions, share code snippets, and get answers from experienced developers on DevOverflow.",
+};
 
 const AskAQuestion = async () => {
   const session = await auth();
