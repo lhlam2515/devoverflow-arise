@@ -227,3 +227,8 @@ export const DeleteQuestionSchema = z.object({
 export const DeleteAnswerSchema = z.object({
   answerId: z.string().min(1, { message: "Answer ID is required." }),
 });
+
+export const GlobalSearchParamsSchema = z.object({
+  query: z.string(),
+  type: z.string().nullable().optional(),
+});
