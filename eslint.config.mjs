@@ -42,6 +42,7 @@ const eslintConfig = [
         },
       ],
     },
+    ignorePatterns: ["components/ui/**"],
   }),
 ];
 
