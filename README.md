@@ -114,8 +114,8 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/lhlam2515/nextjs15-devflow.git
-cd nextjs15-devflow
+git clone https://github.com/lhlam2515/devoverflow-arise.git
+cd devoverflow-arise
 ```
 
 **Installation**
