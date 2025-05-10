@@ -159,8 +159,6 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
 ## <a name="links">🔗 Assets & Resources</a>
-
-- [Live Demo](https://nextjs15-devflow.vercel.app)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [MongoDB Documentation](https://www.mongodb.com/docs/)
 - [Mongoose Documentation](https://mongoosejs.com/docs/)
