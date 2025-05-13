@@ -159,12 +159,12 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
 ## <a name="links">🔗 Assets & Resources</a>
+
 - [Next.js Documentation](https://nextjs.org/docs)
-- [MongoDB Documentation](https://www.mongodb.com/docs/)
-- [Mongoose Documentation](https://mongoosejs.com/docs/)
-- [NextAuth Documentation](https://next-auth.js.org/)
-- [Google Gemini Documentation](https://developers.google.com/gemini)
+- [Auth.js Documentation](https://authjs.dev/)
 - [ShadCN UI Documentation](https://ui.shadcn.com/)
 - [TailwindCSS Documentation](https://tailwindcss.com/docs)
+- [MongoDB Documentation](https://www.mongodb.com/docs/)
+- [Mongoose Documentation](https://mongoosejs.com/docs/)
 
 Assets used in the project can be found [here](https://drive.google.com/file/d/1nBru53dqIY4__A_WsburhpdiWUbdbncY/view?usp=sharing)
