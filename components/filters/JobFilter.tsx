@@ -25,7 +25,7 @@ const JobsFilter = ({ countriesList }: JobsFilterProps) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const sortedContriesList = countriesList?.sort((a, b) =>
+  const sortedCountriesList = countriesList?.sort((a, b) =>
     a.name.common.localeCompare(b.name.common)
   );
 
@@ -64,8 +64,8 @@ const JobsFilter = ({ countriesList }: JobsFilterProps) => {
 
         <SelectContent className="body-semibold max-h-[350px] max-w-[250px]">
           <SelectGroup>
-            {sortedContriesList ? (
-              sortedContriesList.map((country: Country) => (
+            {sortedCountriesList ? (
+              sortedCountriesList.map((country: Country) => (
                 <SelectItem
                   key={country.name.common}
                   value={country.name.common}
