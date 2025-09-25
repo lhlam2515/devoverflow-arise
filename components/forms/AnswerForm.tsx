@@ -93,11 +93,11 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
       }
 
       const answer = extractOuterMarkdownContent(data) || data;
-      const formattedAnswer = answer.replace(/<br>/g, " ").toString().trim();
+      const formattedAnswer = answer?.replace(/<br>/g, " ").toString().trim();
 
       if (editorRef.current) {
-        editorRef.current.setMarkdown(formattedAnswer);
-        form.setValue("content", formattedAnswer);
+        editorRef.current.setMarkdown(formattedAnswer!);
+        form.setValue("content", formattedAnswer!);
         form.trigger("content");
       }
 

@@ -60,7 +60,7 @@ export const formatNumber = (number: number) => {
   }
 };
 
-export const extractOuterMarkdownContent = (content: string) => {
+export const extractOuterMarkdownContent = (content = "") => {
   const startMarker = "```markdown";
   const endMarker = "```";
 
