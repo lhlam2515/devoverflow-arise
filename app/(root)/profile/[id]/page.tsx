@@ -225,7 +225,7 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
         </Tabs>
 
         <div className="flex w-full min-w-[250px] flex-1 flex-col max-lg:hidden">
-          <h3 className="h3-bold text-dark200-light900">Tog Tech</h3>
+          <h3 className="h3-bold text-dark200-light900">Top Tech</h3>
           <div className="mt-7 flex flex-col gap-4">
             <DataRenderer
               success={userTopTagsSuccess}
