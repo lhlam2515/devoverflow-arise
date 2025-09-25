@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import z from "zod";
 
 import Account from "@/database/account.model";
 import handleError from "@/lib/handlers/error";
@@ -62,7 +63,9 @@ export async function PUT(
     const validatedData = AccountSchema.partial().safeParse(body);
 
     if (!validatedData.success) {
-      throw new ValidationError(validatedData.error.flatten().fieldErrors);
+      throw new ValidationError(
+        z.flattenError(validatedData.error).fieldErrors
+      );
     }
 
     const updatedAccount = await Account.findByIdAndUpdate(id, validatedData, {

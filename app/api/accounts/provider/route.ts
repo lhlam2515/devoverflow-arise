@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import z from "zod";
 
 import Account from "@/database/account.model";
 import handleError from "@/lib/handlers/error";
@@ -17,7 +18,9 @@ export async function POST(request: Request) {
       providerAccountId,
     });
     if (!validatedData.success) {
-      throw new ValidationError(validatedData.error.flatten().fieldErrors);
+      throw new ValidationError(
+        z.flattenError(validatedData.error).fieldErrors
+      );
     }
 
     const account = await Account.findOne({ providerAccountId });

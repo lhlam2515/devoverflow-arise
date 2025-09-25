@@ -9,7 +9,7 @@ import { useSession } from "next-auth/react";
 import { useRef, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { z } from "zod";
+import z from "zod";
 
 import {
   Form,

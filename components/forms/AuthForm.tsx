@@ -11,7 +11,7 @@ import {
   useForm,
 } from "react-hook-form";
 import { toast } from "sonner";
-import { z, ZodType } from "zod";
+import z, { ZodType } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {

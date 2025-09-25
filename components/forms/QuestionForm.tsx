@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import React, { useRef, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { z } from "zod";
+import z from "zod";
 
 import ROUTES from "@/constants/routes";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
@@ -107,7 +107,8 @@ const QuestionForm = ({ question, isEdit = false }: Props) => {
         if (result.success) {
           toast.success("Question updated successfully!");
 
-          if (result.data) router.push(ROUTES.QUESTION(result.data._id));
+          if (result.data)
+            router.push(ROUTES.QUESTION(result.data._id as string));
         } else {
           toast.error(`Error ${result.error}`, {
             description: result.error?.message || "Something went wrong",
