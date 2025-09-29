@@ -54,7 +54,9 @@ const Community = async ({ searchParams }: RouteParams) => {
         empty={EMPTY_USERS}
         render={(users) => (
           <div className="mt-12 flex flex-wrap gap-5">
-            {users?.map((user) => <UserCard key={user._id} {...user} />)}
+            {users?.map((user) => (
+              <UserCard key={user._id} {...user} />
+            ))}
           </div>
         )}
       />
