@@ -23,8 +23,8 @@
     "**/.next": true,
     // "**/.git": false,
     "**/node_modules": true,
-    "next-env.d.ts": true,
+    "next-env.d.ts": true
     // "**/components.json": true,
-    "**/.prettierrc": true
+    // "**/.prettierrc": true
   }
 }
