@@ -65,12 +65,5 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "packageManager": "npm@11.2.0",
-  "overrides": {
-    "react": "$react",
-    "react-dom": "$react-dom",
-    "@types/react": "19.1.1",
-    "@types/react-dom": "19.1.2"
   }
 }
