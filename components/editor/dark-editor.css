@@ -1,5 +1,5 @@
-@import url("@radix-ui/colors/tomato-dark.css");
-@import url("@radix-ui/colors/mauve-dark.css");
+@import "@radix-ui/colors/tomato-dark.css";
+@import "@radix-ui/colors/mauve-dark.css";
 
 .dark .dark-editor {
   --accentBase: var(--tomato-1);
