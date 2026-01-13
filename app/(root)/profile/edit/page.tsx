@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { auth } from "@/auth";
-import ProfileForm from "@/components/forms/ProfileForm";
+import { UserForm } from "@/components/features/user";
 import ROUTES from "@/constants/routes";
 import { getUser } from "@/lib/actions/user.action";
 import { _User } from "@/types/global";
@@ -17,7 +17,7 @@ const Page = async () => {
     <>
       <h1 className="h1-bold tex-dark100-light900">Edit Profile</h1>
 
-      <ProfileForm user={data?.user as _User} />
+      <UserForm user={data?.user as _User} />
     </>
   );
 
