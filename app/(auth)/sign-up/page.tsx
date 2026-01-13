@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import AuthForm from "@/components/forms/AuthForm";
+import { AuthForm } from "@/components/features/auth";
 import { signUpWithCredentials } from "@/lib/actions/auth.action";
 import { SignUpSchema } from "@/lib/validations";
 

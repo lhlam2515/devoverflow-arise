@@ -15,11 +15,11 @@ import {
 import { formUrlQuery } from "@/lib/url";
 import { Country } from "@/types/global";
 
-interface JobsFilterProps {
+interface JobFilterProps {
   countriesList: Country[];
 }
 
-const JobsFilter = ({ countriesList }: JobsFilterProps) => {
+const JobFilter = ({ countriesList }: JobFilterProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -83,4 +83,4 @@ const JobsFilter = ({ countriesList }: JobsFilterProps) => {
   );
 };
 
-export default JobsFilter;
+export default JobFilter;

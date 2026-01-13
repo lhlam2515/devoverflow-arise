@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { auth } from "@/auth";
-import ProfileForm from "@/components/forms/ProfileForm";
+import { ProfileForm } from "@/components/features/users";
 import ROUTES from "@/constants/routes";
 import { getUser } from "@/lib/actions/user.action";
 import { _User } from "@/types/global";

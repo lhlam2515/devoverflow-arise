@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 
-import JobCard from "@/components/cards/JobCard";
-import JobsFilter from "@/components/filters/JobFilter";
-import Pagination from "@/components/Pagination";
+import { JobCard, JobFilter } from "@/components/features/jobs";
+import { Pagination } from "@/components/shared";
 import {
   fetchCountries,
   fetchJobs,
@@ -33,7 +32,7 @@ const Page = async ({ searchParams }: RouteParams) => {
       <h1 className="h1-bold text-dark100-light900">Jobs</h1>
 
       <div className="flex">
-        <JobsFilter countriesList={countries} />
+        <JobFilter countriesList={countries} />
       </div>
 
       <section className="border-light800-dark300 mt-11 mb-9 flex flex-col gap-9 border-b pb-9">

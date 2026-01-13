@@ -1,11 +1,9 @@
 import { Metadata } from "next";
 import React from "react";
 
-import TagCard from "@/components/cards/TagCard";
-import DataRenderer from "@/components/DataRenderer";
-import CommonFilter from "@/components/filters/CommonFilter";
-import Pagination from "@/components/Pagination";
-import LocalSearch from "@/components/search/LocalSearch";
+import { TagCard } from "@/components/features/tags";
+import { LocalSearch, DataRenderer, Pagination } from "@/components/shared";
+import { CommonFilter } from "@/components/shared/filters";
 import { TagFilters } from "@/constants/filters";
 import ROUTES from "@/constants/routes";
 import { EMPTY_TAGS } from "@/constants/states";

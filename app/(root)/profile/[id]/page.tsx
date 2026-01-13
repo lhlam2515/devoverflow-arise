@@ -4,16 +4,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { auth } from "@/auth";
-import AnswerCard from "@/components/cards/AnswerCard";
-import QuestionCard from "@/components/cards/QuestionCard";
-import TagCard from "@/components/cards/TagCard";
-import DataRenderer from "@/components/DataRenderer";
-import Pagination from "@/components/Pagination";
+import { AnswerCard } from "@/components/features/answers";
+import { QuestionCard } from "@/components/features/questions";
+import { TagCard } from "@/components/features/tags";
+import { ProfileLink, Stats } from "@/components/features/users";
+import { UserAvatar, DataRenderer, Pagination } from "@/components/shared";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import ProfileLink from "@/components/user/ProfileLink";
-import Stats from "@/components/user/Stats";
-import UserAvatar from "@/components/UserAvatar";
 import { EMPTY_ANSWERS, EMPTY_QUESTION, EMPTY_TAGS } from "@/constants/states";
 import {
   getUser,

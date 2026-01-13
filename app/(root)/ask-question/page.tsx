@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { auth } from "@/auth";
-import QuestionForm from "@/components/forms/QuestionForm";
+import { QuestionForm } from "@/components/features/questions";
 
 export const metadata: Metadata = {
   title: "DevOverflow | Ask a Question",

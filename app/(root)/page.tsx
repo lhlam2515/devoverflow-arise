@@ -1,12 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
-import QuestionCard from "@/components/cards/QuestionCard";
-import DataRenderer from "@/components/DataRenderer";
-import CommonFilter from "@/components/filters/CommonFilter";
-import HomeFilter from "@/components/filters/HomeFilter";
-import Pagination from "@/components/Pagination";
-import LocalSearch from "@/components/search/LocalSearch";
+import { QuestionCard } from "@/components/features/questions";
+import { LocalSearch, DataRenderer, Pagination } from "@/components/shared";
+import { CommonFilter, HomeFilter } from "@/components/shared/filters";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
 import ROUTES from "@/constants/routes";
