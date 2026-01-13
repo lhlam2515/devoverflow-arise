@@ -7,7 +7,7 @@ import GlobalSearch from "@/components/features/search/GlobalSearch";
 import UserAvatar from "@/components/shared/UserAvatar";
 import ROUTES from "@/constants/routes";
 
-import MobileNavigation from "./MobileNavigation";
+import MobileNav from "./MobileNav";
 import Theme from "./Theme";
 
 const Navbar = async () => {
@@ -40,7 +40,7 @@ const Navbar = async () => {
           />
         )}
 
-        <MobileNavigation />
+        <MobileNav />
       </div>
     </nav>
   );

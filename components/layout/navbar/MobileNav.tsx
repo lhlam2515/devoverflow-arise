@@ -16,7 +16,7 @@ import ROUTES from "@/constants/routes";
 
 import NavLinks from "./NavLinks";
 
-const MobileNavigation = async () => {
+const MobileNav = async () => {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -105,4 +105,4 @@ const MobileNavigation = async () => {
   );
 };
 
-export default MobileNavigation;
+export default MobileNav;

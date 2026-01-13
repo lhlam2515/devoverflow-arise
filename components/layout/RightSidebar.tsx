@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { TagCard } from "@/components/features/tags";
+import { TagCard } from "@/components/features/tag";
 import { DataRenderer } from "@/components/shared";
 import ROUTES from "@/constants/routes";
 import { getHotQuestions } from "@/lib/actions/question.action";

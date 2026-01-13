@@ -12,7 +12,7 @@ interface Props extends ActionResponse<_Answer[]> {
   totalAnswers: number;
 }
 
-const AllAnswers = ({
+const AnswerList = ({
   data,
   success,
   error,
@@ -49,4 +49,4 @@ const AllAnswers = ({
   );
 };
 
-export default AllAnswers;
+export default AnswerList;

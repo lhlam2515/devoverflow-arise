@@ -7,7 +7,7 @@ Code.theme = {
   lightSelector: "html.light",
 };
 
-const Preview = ({ content }: { content: string }) => {
+const EditorPreview = ({ content }: { content: string }) => {
   const formattedContent = content.replace(/\\/g, "").replace(/&#x20;/g, "");
 
   return (
@@ -28,4 +28,4 @@ const Preview = ({ content }: { content: string }) => {
   );
 };
 
-export default Preview;
+export default EditorPreview;

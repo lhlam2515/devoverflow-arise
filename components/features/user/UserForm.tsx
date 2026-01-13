@@ -28,7 +28,7 @@ interface Params {
   user: _User;
 }
 
-const ProfileForm = ({ user }: Params) => {
+const UserForm = ({ user }: Params) => {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
@@ -190,4 +190,4 @@ const ProfileForm = ({ user }: Params) => {
   );
 };
 
-export default ProfileForm;
+export default UserForm;

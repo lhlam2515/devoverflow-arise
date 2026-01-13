@@ -6,7 +6,7 @@ interface Props {
   href?: string;
   title: string;
 }
-const ProfileLink = ({ imgUrl, href, title }: Props) => {
+const UserLink = ({ imgUrl, href, title }: Props) => {
   return (
     <div className="flex-center gap-1">
       <Image src={imgUrl} alt={title} width={20} height={20} />
@@ -27,4 +27,4 @@ const ProfileLink = ({ imgUrl, href, title }: Props) => {
   );
 };
 
-export default ProfileLink;
+export default UserLink;

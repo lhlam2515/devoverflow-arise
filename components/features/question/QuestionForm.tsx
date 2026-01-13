@@ -10,7 +10,7 @@ import { Form, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
 
-import { TagCard } from "@/components/features/tags";
+import { TagCard } from "@/components/features/tag";
 import { Button } from "@/components/ui/button";
 import {
   FormField,

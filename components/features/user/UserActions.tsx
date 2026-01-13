@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -22,7 +23,7 @@ interface Props {
   itemId: string;
 }
 
-const EditDeleteAction = ({ type, itemId }: Props) => {
+const UserActions = ({ type, itemId }: Props) => {
   const router = useRouter();
 
   const handleEdit = async () => {
@@ -85,4 +86,4 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
   );
 };
 
-export default EditDeleteAction;
+export default UserActions;

@@ -18,7 +18,7 @@ interface Props {
   hasVotedPromise: Promise<ActionResponse<HasVotedResponse>>;
 }
 
-const Votes = ({
+const VoteAction = ({
   upvotes,
   downvotes,
   targetId,
@@ -118,4 +118,4 @@ const Votes = ({
   );
 };
 
-export default Votes;
+export default VoteAction;

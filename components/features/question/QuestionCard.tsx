@@ -1,8 +1,8 @@
 import Link from "next/link";
 import React from "react";
 
-import { TagCard } from "@/components/features/tags";
-import { EditDeleteAction } from "@/components/features/users";
+import { TagCard } from "@/components/features/tag";
+import { UserActions } from "@/components/features/user";
 import { Metric } from "@/components/shared";
 import ROUTES from "@/constants/routes";
 import { getTimeStamp } from "@/lib/utils";
@@ -32,7 +32,7 @@ const QuestionCard = ({
           </Link>
         </div>
 
-        {showActionBtns && <EditDeleteAction type="question" itemId={_id} />}
+        {showActionBtns && <UserActions type="question" itemId={_id} />}
       </div>
 
       <div className="mt-3.5 flex w-full flex-wrap gap-2">

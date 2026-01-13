@@ -26,7 +26,7 @@ const BadgeCard = ({ imgUrl, value, title }: BadgeCardProps) => (
   </div>
 );
 
-const Stats = ({
+const UserStats = ({
   totalQuestions,
   totalAnswers,
   badges,
@@ -77,4 +77,4 @@ const Stats = ({
   );
 };
 
-export default Stats;
+export default UserStats;

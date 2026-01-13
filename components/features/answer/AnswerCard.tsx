@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { Suspense } from "react";
 
-import { EditDeleteAction } from "@/components/features/users";
+import { UserActions } from "@/components/features/user";
+import { VoteAction } from "@/components/features/vote";
 import { UserAvatar } from "@/components/shared";
-import { Preview } from "@/components/shared/editor";
-import { Votes } from "@/components/shared/votes";
+import { EditorPreview } from "@/components/shared/editor";
 import ROUTES from "@/constants/routes";
 import { hasVoted } from "@/lib/actions/vote.action";
 import { cn, getTimeStamp } from "@/lib/utils";
@@ -44,7 +44,7 @@ const AnswerCard = ({
 
       {showActionBtns && (
         <div className="bg-light800 flex-center absolute -top-5 -right-2 size-9 rounded-full">
-          <EditDeleteAction type="answer" itemId={_id} />
+          <UserActions type="answer" itemId={_id} />
         </div>
       )}
 
@@ -74,7 +74,7 @@ const AnswerCard = ({
 
         <div className="flex justify-end">
           <Suspense fallback={<div>Loading...</div>}>
-            <Votes
+            <VoteAction
               targetId={_id}
               targetType="answer"
               upvotes={upvotes}
@@ -85,7 +85,7 @@ const AnswerCard = ({
         </div>
       </div>
 
-      <Preview content={content} />
+      <EditorPreview content={content} />
 
       {showReadMore && (
         <Link
