@@ -4,19 +4,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import ROUTES from "@/constants/routes";
@@ -62,110 +60,100 @@ const UserForm = ({ user }: Params) => {
   };
 
   return (
-    <Form {...form}>
-      <form
-        className="mt-9 flex w-full flex-col gap-9"
-        onSubmit={form.handleSubmit(handleUpdateProfile)}
-      >
-        <FormField
+    <form
+      className="mt-9 flex w-full flex-col gap-9"
+      onSubmit={form.handleSubmit(handleUpdateProfile)}
+    >
+      <FieldGroup className="gap-9">
+        <Controller
           control={form.control}
           name="name"
-          render={({ field }) => (
-            <FormItem className="space-y-3.5">
-              <FormLabel className="paragraph-semibold! text-dark400-light800">
+          render={({ field, fieldState }) => (
+            <Field className="space-y-3.5">
+              <FieldLabel className="paragraph-semibold! text-dark400-light800">
                 Name <span className="text-primary-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Input
-                  className="no-focus! paragraph-normal border-light700-dark400 bg-light800-dark300! text-dark300-light700 min-h-[56px] border"
-                  placeholder="Your Name"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+              </FieldLabel>
+              <Input
+                className="no-focus! paragraph-normal border-light700-dark400 bg-light800-dark300! text-dark300-light700 min-h-[56px] border"
+                placeholder="Your Name"
+                {...field}
+              />
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
           )}
         />
 
-        <FormField
+        <Controller
           control={form.control}
           name="username"
-          render={({ field }) => (
-            <FormItem className="space-y-3.5">
-              <FormLabel className="paragraph-semibold text-dark400-light800">
+          render={({ field, fieldState }) => (
+            <Field className="space-y-3.5">
+              <FieldLabel className="paragraph-semibold text-dark400-light800">
                 Username <span className="text-primary-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Input
-                  className="no-focus! paragraph-normal border-light700-dark400 bg-light800-dark300! text-dark300-light700 min-h-[56px] border"
-                  placeholder="Your username"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+              </FieldLabel>
+              <Input
+                className="no-focus! paragraph-normal border-light700-dark400 bg-light800-dark300! text-dark300-light700 min-h-[56px] border"
+                placeholder="Your username"
+                {...field}
+              />
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
           )}
         />
 
-        <FormField
+        <Controller
           control={form.control}
           name="portfolio"
-          render={({ field }) => (
-            <FormItem className="space-y-3.5">
-              <FormLabel className="paragraph-semibold text-dark400-light800">
+          render={({ field, fieldState }) => (
+            <Field className="space-y-3.5">
+              <FieldLabel className="paragraph-semibold text-dark400-light800">
                 Portfolio Link
-              </FormLabel>
-              <FormControl>
-                <Input
-                  type="url"
-                  className="no-focus! paragraph-normal border-light700-dark400 bg-light800-dark300! text-dark300-light700 min-h-[56px] border"
-                  placeholder="Your Portfolio link"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+              </FieldLabel>
+              <Input
+                type="url"
+                className="no-focus! paragraph-normal border-light700-dark400 bg-light800-dark300! text-dark300-light700 min-h-[56px] border"
+                placeholder="Your Portfolio link"
+                {...field}
+              />
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
           )}
         />
 
-        <FormField
+        <Controller
           control={form.control}
           name="location"
-          render={({ field }) => (
-            <FormItem className="space-y-3.5">
-              <FormLabel className="paragraph-semibold text-dark400-light800">
+          render={({ field, fieldState }) => (
+            <Field className="space-y-3.5">
+              <FieldLabel className="paragraph-semibold text-dark400-light800">
                 Location <span className="text-primary-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Input
-                  className="no-focus! paragraph-normal border-light700-dark400 bg-light800-dark300! text-dark300-light700 min-h-[56px] border"
-                  placeholder="Where do you live?"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+              </FieldLabel>
+              <Input
+                className="no-focus! paragraph-normal border-light700-dark400 bg-light800-dark300! text-dark300-light700 min-h-[56px] border"
+                placeholder="Where do you live?"
+                {...field}
+              />
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
           )}
         />
 
-        <FormField
+        <Controller
           control={form.control}
           name="bio"
-          render={({ field }) => (
-            <FormItem className="space-y-3.5">
-              <FormLabel className="paragraph-semibold text-dark400-light800">
+          render={({ field, fieldState }) => (
+            <Field className="space-y-3.5">
+              <FieldLabel className="paragraph-semibold text-dark400-light800">
                 Bio <span className="text-primary-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Textarea
-                  rows={5}
-                  className="no-focus! paragraph-normal border-light700-dark400 bg-light800-dark300! text-dark300-light700 min-h-[56px] border"
-                  placeholder="What's special about you?"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+              </FieldLabel>
+              <Textarea
+                rows={5}
+                className="no-focus! paragraph-normal border-light700-dark400 bg-light800-dark300! text-dark300-light700 min-h-[56px] border"
+                placeholder="What's special about you?"
+                {...field}
+              />
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
           )}
         />
 
@@ -185,8 +173,8 @@ const UserForm = ({ user }: Params) => {
             )}
           </Button>
         </div>
-      </form>
-    </Form>
+      </FieldGroup>
+    </form>
   );
 };
 

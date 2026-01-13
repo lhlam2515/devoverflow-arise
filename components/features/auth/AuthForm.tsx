@@ -9,19 +9,18 @@ import {
   Path,
   SubmitHandler,
   useForm,
+  Controller,
 } from "react-hook-form";
 import { toast } from "sonner";
 import z, { ZodType } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import ROUTES from "@/constants/routes";
 import { ActionResponse } from "@/types/global";
@@ -67,71 +66,71 @@ const AuthForm = <T extends FieldValues>({
   const buttonText = formType === "SIGN_IN" ? "Sign In" : "Sign Up";
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleSubmit)}
-        className="mt-10 space-y-6"
-      >
+    <form
+      onSubmit={form.handleSubmit(handleSubmit)}
+      className="mt-10 space-y-6"
+    >
+      <FieldGroup className="gap-6">
         {Object.keys(defaultValues).map((field) => (
-          <FormField
+          <Controller
             key={field}
             control={form.control}
             name={field as Path<T>}
-            render={({ field }) => (
-              <FormItem className="flex w-full flex-col gap-2.5">
-                <FormLabel className="paragraph-medium! text-dark400-light700">
+            render={({ field, fieldState }) => (
+              <Field className="flex w-full flex-col gap-2.5">
+                <FieldLabel className="paragraph-medium! text-dark400-light700">
                   {field.name === "email"
                     ? "Email Address"
                     : field.name.charAt(0).toUpperCase() + field.name.slice(1)}
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    required
-                    type={field.name === "password" ? "password" : "text"}
-                    {...field}
-                    className="paragraph-normal bg-light900-dark300! border-light700-dark400 text-dark300-light700 no-focus! min-h-12 rounded-sm border"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
+                </FieldLabel>
+                <Input
+                  required
+                  type={field.name === "password" ? "password" : "text"}
+                  {...field}
+                  className="paragraph-normal bg-light900-dark300! border-light700-dark400 text-dark300-light700 no-focus! min-h-12 rounded-sm border"
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
             )}
           />
         ))}
+      </FieldGroup>
 
-        <Button
-          disabled={form.formState.isSubmitting}
-          className="bg-primary-gradient paragraph-medium! font-inter text-light-900 min-h-12 w-full cursor-pointer rounded-lg px-4 py-3"
-        >
-          {form.formState.isSubmitting
-            ? buttonText === "Sign In"
-              ? "Signing In..."
-              : "Signing Up..."
-            : buttonText}
-        </Button>
+      <Button
+        disabled={form.formState.isSubmitting}
+        className="bg-primary-gradient paragraph-medium! font-inter text-light-900 min-h-12 w-full cursor-pointer rounded-lg px-4 py-3"
+      >
+        {form.formState.isSubmitting
+          ? buttonText === "Sign In"
+            ? "Signing In..."
+            : "Signing Up..."
+          : buttonText}
+      </Button>
 
-        {formType === "SIGN_IN" ? (
-          <p>
-            Don&apos;t have an account?{" "}
-            <Link
-              href={ROUTES.SIGN_UP}
-              className="paragraph-semibold text-primary-gradient"
-            >
-              Sign up
-            </Link>
-          </p>
-        ) : (
-          <p>
-            Already have an account?{" "}
-            <Link
-              href={ROUTES.SIGN_IN}
-              className="paragraph-semibold text-primary-gradient"
-            >
-              Sign in
-            </Link>
-          </p>
-        )}
-      </form>
-    </Form>
+      {formType === "SIGN_IN" ? (
+        <p>
+          Don&apos;t have an account?{" "}
+          <Link
+            href={ROUTES.SIGN_UP}
+            className="paragraph-semibold text-primary-gradient"
+          >
+            Sign up
+          </Link>
+        </p>
+      ) : (
+        <p>
+          Already have an account?{" "}
+          <Link
+            href={ROUTES.SIGN_IN}
+            className="paragraph-semibold text-primary-gradient"
+          >
+            Sign in
+          </Link>
+        </p>
+      )}
+    </form>
   );
 };
 

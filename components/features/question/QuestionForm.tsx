@@ -6,21 +6,19 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import React, { useRef, useTransition } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
 
 import { TagCard } from "@/components/features/tag";
 import { Button } from "@/components/ui/button";
 import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormDescription,
-  FormMessage,
-} from "@/components/ui/form";
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import ROUTES from "@/constants/routes";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
@@ -132,94 +130,88 @@ const QuestionForm = ({ question, isEdit = false }: Props) => {
   };
 
   return (
-    <Form {...form}>
-      <form
-        className="flex w-full flex-col gap-10"
-        onSubmit={form.handleSubmit(handleCreateQuestion)}
-      >
-        <FormField
+    <form
+      className="flex w-full flex-col gap-10"
+      onSubmit={form.handleSubmit(handleCreateQuestion)}
+    >
+      <FieldGroup className="gap-10">
+        <Controller
           control={form.control}
           name="title"
-          render={({ field }) => (
-            <FormItem className="flex w-full flex-col">
-              <FormLabel className="paragraph-semibold! text-dark400-light800">
+          render={({ field, fieldState }) => (
+            <Field className="flex w-full flex-col gap-2.5">
+              <FieldLabel className="paragraph-semibold! text-dark400-light800">
                 Question Title <span className="text-primary-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Input
-                  className="paragraph-normal bg-light700-dark300! border-light700-dark400 text-dark300-light700 no-focus! min-h-[56px] border"
-                  {...field}
-                />
-              </FormControl>
-              <FormDescription className="body-normal text-light-500 mt-2.5">
+              </FieldLabel>
+              <Input
+                className="paragraph-normal bg-light700-dark300! border-light700-dark400 text-dark300-light700 no-focus! min-h-[56px] border"
+                {...field}
+              />
+              <FieldDescription className="body-normal text-light-500 mt-2.5">
                 Be specific and imagine you&apos;re asking a question to another
                 person.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
+              </FieldDescription>
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
           )}
         />
-        <FormField
+        <Controller
           control={form.control}
           name="content"
-          render={({ field }) => (
-            <FormItem className="flex w-full flex-col">
-              <FormLabel className="paragraph-semibold! text-dark400-light800">
+          render={({ field, fieldState }) => (
+            <Field className="flex w-full flex-col gap-2.5">
+              <FieldLabel className="paragraph-semibold! text-dark400-light800">
                 Detailed explanation of your problem{" "}
                 <span className="text-primary-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Editor
-                  value={field.value}
-                  editorRef={editorRef}
-                  fieldChange={field.onChange}
-                />
-              </FormControl>
-              <FormDescription className="body-normal text-light-500 mt-2.5">
+              </FieldLabel>
+              <Editor
+                value={field.value}
+                editorRef={editorRef}
+                fieldChange={field.onChange}
+              />
+              <FieldDescription className="body-normal text-light-500 mt-2.5">
                 Introduce the problem and expand on what you&apos;ve tried.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
+              </FieldDescription>
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
           )}
         />
-        <FormField
+        <Controller
           control={form.control}
           name="tags"
-          render={({ field }) => (
-            <FormItem className="flex w-full flex-col gap-3">
-              <FormLabel className="paragraph-semibold! text-dark400-light800">
+          render={({ field, fieldState }) => (
+            <Field className="flex w-full flex-col gap-3">
+              <FieldLabel className="paragraph-semibold! text-dark400-light800">
                 Tags <span className="text-primary-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <div>
-                  <Input
-                    className="paragraph-normal bg-light700-dark300! border-light700-dark400 text-dark300-light700 no-focus! min-h-[56px] border"
-                    placeholder="Add tags..."
-                    onKeyDown={(e) => handleInputKeyDown(e, field)}
-                  />
-                  {field.value.length > 0 && (
-                    <div className="flex-start mt-2.5 flex-wrap gap-2.5">
-                      {field.value.map((tag: string) => (
-                        <TagCard
-                          key={tag}
-                          _id={tag}
-                          name={tag}
-                          compact
-                          remove
-                          isButton
-                          handleRemove={() => handleTagRemove(tag, field)}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </FormControl>
-              <FormDescription className="body-normal text-light-500 mt-2.5">
+              </FieldLabel>
+              <div>
+                <Input
+                  className="paragraph-normal bg-light700-dark300! border-light700-dark400 text-dark300-light700 no-focus! min-h-[56px] border"
+                  placeholder="Add tags..."
+                  onKeyDown={(e) => handleInputKeyDown(e, field)}
+                />
+                {field.value.length > 0 && (
+                  <div className="flex-start mt-2.5 flex-wrap gap-2.5">
+                    {field.value.map((tag: string) => (
+                      <TagCard
+                        key={tag}
+                        _id={tag}
+                        name={tag}
+                        compact
+                        remove
+                        isButton
+                        handleRemove={() => handleTagRemove(tag, field)}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+              <FieldDescription className="body-normal text-light-500 mt-2.5">
                 Add up to 3 tags to describe what your question is about. You
                 need to press enter to add a tag.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
+              </FieldDescription>
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
           )}
         />
 
@@ -239,8 +231,8 @@ const QuestionForm = ({ question, isEdit = false }: Props) => {
             )}
           </Button>
         </div>
-      </form>
-    </Form>
+      </FieldGroup>
+    </form>
   );
 };
 

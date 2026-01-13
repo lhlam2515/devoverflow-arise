@@ -7,18 +7,12 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRef, useState, useTransition } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
 
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Field, FieldError, FieldGroup } from "@/components/ui/field";
 import { createAnswer } from "@/lib/actions/answer.action";
 import { api } from "@/lib/api";
 import { extractOuterMarkdownContent } from "@/lib/utils";
@@ -143,25 +137,25 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
           )}
         </Button>
       </div>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="mt-6 flex w-full flex-col gap-10"
-        >
-          <FormField
+      <form
+        onSubmit={form.handleSubmit(handleSubmit)}
+        className="mt-6 flex w-full flex-col gap-10"
+      >
+        <FieldGroup className="gap-10">
+          <Controller
             control={form.control}
             name="content"
-            render={({ field }) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormControl>
-                  <Editor
-                    value={field.value}
-                    editorRef={editorRef}
-                    fieldChange={field.onChange}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
+            render={({ field, fieldState }) => (
+              <Field className="flex w-full flex-col gap-3">
+                <Editor
+                  value={field.value}
+                  editorRef={editorRef}
+                  fieldChange={field.onChange}
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
             )}
           />
 
@@ -180,8 +174,8 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
               )}
             </Button>
           </div>
-        </form>
-      </Form>
+        </FieldGroup>
+      </form>
     </div>
   );
 };
