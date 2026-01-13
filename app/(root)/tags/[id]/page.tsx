@@ -1,10 +1,8 @@
 import React from "react";
 
-import QuestionCard from "@/components/features/questions/QuestionCard";
-import DataRenderer from "@/components/shared/DataRenderer";
-import CommonFilter from "@/components/filters/CommonFilter";
-import Pagination from "@/components/shared/Pagination";
-import LocalSearch from "@/components/shared/LocalSearch";
+import QuestionCard from "@/components/features/question/QuestionCard";
+import { LocalSearch, DataRenderer, Pagination } from "@/components/shared";
+import { CommonFilter } from "@/components/shared/filters";
 import { HomePageFilters } from "@/constants/filters";
 import ROUTES from "@/constants/routes";
 import { EMPTY_QUESTION } from "@/constants/states";

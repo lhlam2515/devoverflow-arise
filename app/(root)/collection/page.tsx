@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { QuestionCard } from "@/components/features/questions";
+import { QuestionCard } from "@/components/features/question";
 import { LocalSearch, DataRenderer, Pagination } from "@/components/shared";
 import { CommonFilter } from "@/components/shared/filters";
 import { CollectionFilters } from "@/constants/filters";

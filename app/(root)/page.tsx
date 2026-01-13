@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
-import { QuestionCard } from "@/components/features/questions";
+import { QuestionCard } from "@/components/features/question";
 import { LocalSearch, DataRenderer, Pagination } from "@/components/shared";
 import { CommonFilter, HomeFilter } from "@/components/shared/filters";
 import { Button } from "@/components/ui/button";

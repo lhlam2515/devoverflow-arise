@@ -2,7 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import React from "react";
 
 import { auth } from "@/auth";
-import { QuestionForm } from "@/components/features/questions";
+import { QuestionForm } from "@/components/features/question";
 import ROUTES from "@/constants/routes";
 import { getQuestion } from "@/lib/actions/question.action";
 import { RouteParams } from "@/types/global";

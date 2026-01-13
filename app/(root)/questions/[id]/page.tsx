@@ -4,12 +4,12 @@ import { redirect } from "next/navigation";
 import { after } from "next/server";
 import React, { Suspense } from "react";
 
-import { AllAnswers, AnswerForm } from "@/components/features/answers";
-import { SaveQuestion } from "@/components/features/questions";
-import { TagCard } from "@/components/features/tags";
+import { AnswerList, AnswerForm } from "@/components/features/answer";
+import { SaveQuestion } from "@/components/features/question";
+import { TagCard } from "@/components/features/tag";
+import { VoteAction } from "@/components/features/vote";
 import { UserAvatar, Metric } from "@/components/shared";
-import { Preview } from "@/components/shared/editor";
-import { Votes } from "@/components/shared/votes";
+import { EditorPreview } from "@/components/shared/editor";
 import ROUTES from "@/constants/routes";
 import { getAnswers } from "@/lib/actions/answer.action";
 import { hasSaveQuestion } from "@/lib/actions/collection.action";
@@ -96,7 +96,7 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
 
           <div className="flex items-center justify-end gap-4">
             <Suspense fallback={<div>Loading...</div>}>
-              <Votes
+              <VoteAction
                 targetId={question._id}
                 targetType="question"
                 upvotes={question.upvotes}
@@ -143,7 +143,7 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
         />
       </div>
 
-      <Preview content={content} />
+      <EditorPreview content={content} />
 
       <div className="mt-8 flex flex-wrap gap-2">
         {tags.map((tag) => (
@@ -157,7 +157,7 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
       </div>
 
       <section className="my-5">
-        <AllAnswers
+        <AnswerList
           page={Number(page) || 1}
           isNext={answerResult?.isNext || false}
           data={answerResult?.answers}

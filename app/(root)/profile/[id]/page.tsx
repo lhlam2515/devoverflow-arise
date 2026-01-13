@@ -4,10 +4,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { auth } from "@/auth";
-import { AnswerCard } from "@/components/features/answers";
-import { QuestionCard } from "@/components/features/questions";
-import { TagCard } from "@/components/features/tags";
-import { ProfileLink, Stats } from "@/components/features/users";
+import { AnswerCard } from "@/components/features/answer";
+import { QuestionCard } from "@/components/features/question";
+import { TagCard } from "@/components/features/tag";
+import { UserLink, UserStats } from "@/components/features/user";
 import { UserAvatar, DataRenderer, Pagination } from "@/components/shared";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -111,16 +111,16 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
 
             <div className="mt-5 flex flex-wrap items-center justify-start gap-5">
               {portfolio && (
-                <ProfileLink
+                <UserLink
                   imgUrl="/icons/link.svg"
                   href={portfolio}
                   title="Portfolio"
                 />
               )}
               {location && (
-                <ProfileLink imgUrl="/icons/location.svg" title="Location" />
+                <UserLink imgUrl="/icons/location.svg" title="Location" />
               )}
-              <ProfileLink
+              <UserLink
                 imgUrl="/icons/calendar.svg"
                 title={dayjs(createdAt).format("MMMM YYYY")}
               />
@@ -146,7 +146,7 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
         </div>
       </section>
 
-      <Stats
+      <UserStats
         totalQuestions={userStats?.totalQuestions || 0}
         totalAnswers={userStats?.totalAnswers || 0}
         badges={userStats?.badges || { GOLD: 0, SILVER: 0, BRONZE: 0 }}

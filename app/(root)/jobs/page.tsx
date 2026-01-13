@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { JobCard, JobFilter } from "@/components/features/jobs";
+import { JobCard, JobFilter } from "@/components/features/job";
 import { Pagination } from "@/components/shared";
 import {
   fetchCountries,

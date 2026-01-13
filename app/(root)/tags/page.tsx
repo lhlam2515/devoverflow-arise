@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import React from "react";
 
-import { TagCard } from "@/components/features/tags";
+import { TagCard } from "@/components/features/tag";
 import { LocalSearch, DataRenderer, Pagination } from "@/components/shared";
 import { CommonFilter } from "@/components/shared/filters";
 import { TagFilters } from "@/constants/filters";

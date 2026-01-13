@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { UserCard } from "@/components/features/users";
+import { UserCard } from "@/components/features/user";
 import { LocalSearch, DataRenderer, Pagination } from "@/components/shared";
 import { CommonFilter } from "@/components/shared/filters";
 import { UserFilters } from "@/constants/filters";
