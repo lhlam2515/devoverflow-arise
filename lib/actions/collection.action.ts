@@ -6,6 +6,12 @@ import { after } from "next/server";
 
 import ROUTES from "@/constants/routes";
 import { Collection, Question } from "@/database";
+import action from "@/lib/handlers/action";
+import handleError from "@/lib/handlers/error";
+import {
+  CollectionBaseSchema,
+  PaginatedSearchParamsSchema,
+} from "@/lib/validations";
 import { CollectionBaseParams } from "@/types/action";
 import {
   _Collection,
@@ -14,12 +20,6 @@ import {
   PaginatedSearchParams,
 } from "@/types/global";
 
-import action from "../handlers/action";
-import handleError from "../handlers/error";
-import {
-  CollectionBaseSchema,
-  PaginatedSearchParamsSchema,
-} from "../validations";
 import { createInteraction } from "./interaction.action";
 
 export async function toggleSaveQuestion(

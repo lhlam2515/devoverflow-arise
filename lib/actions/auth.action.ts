@@ -5,13 +5,12 @@ import mongoose from "mongoose";
 
 import { signIn } from "@/auth";
 import { Account, User } from "@/database";
+import action from "@/lib/handlers/action";
+import handleError from "@/lib/handlers/error";
+import { NotFoundError } from "@/lib/http-errors";
+import { SignUpSchema, SignInSchema } from "@/lib/validations";
 import { AuthCredentials } from "@/types/action";
 import { ActionResponse, ErrorResponse } from "@/types/global";
-
-import action from "../handlers/action";
-import handleError from "../handlers/error";
-import { NotFoundError } from "../http-errors";
-import { SignInSchema, SignUpSchema } from "../validations";
 
 export async function signUpWithCredentials(
   params: AuthCredentials

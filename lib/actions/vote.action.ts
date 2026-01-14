@@ -6,6 +6,13 @@ import { after } from "next/server";
 
 import ROUTES from "@/constants/routes";
 import { Answer, Question, Vote } from "@/database";
+import action from "@/lib/handlers/action";
+import handleError from "@/lib/handlers/error";
+import {
+  CreateVoteSchema,
+  HasVotedSchema,
+  UpdateVoteCountSchema,
+} from "@/lib/validations";
 import {
   CreateVoteParams,
   HasVotedParams,
@@ -14,13 +21,6 @@ import {
 } from "@/types/action";
 import { ActionResponse, ErrorResponse } from "@/types/global";
 
-import action from "../handlers/action";
-import handleError from "../handlers/error";
-import {
-  CreateVoteSchema,
-  HasVotedSchema,
-  UpdateVoteCountSchema,
-} from "../validations";
 import { createInteraction } from "./interaction.action";
 
 export async function updateVoteCount(

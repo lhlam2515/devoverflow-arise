@@ -4,6 +4,17 @@ import mongoose, { FilterQuery, PipelineStage } from "mongoose";
 import { cache } from "react";
 
 import { Answer, Question, User } from "@/database";
+import action from "@/lib/handlers/action";
+import handleError from "@/lib/handlers/error";
+import { assignBadges } from "@/lib/utils";
+import {
+  GetUserAnswersSchema,
+  GetUserQuestionsSchema,
+  GetUserSchema,
+  GetUserTagsSchema,
+  PaginatedSearchParamsSchema,
+  UpdateUserSchema,
+} from "@/lib/validations";
 import {
   GetUserAnswersParams,
   GetUserParams,
@@ -20,18 +31,6 @@ import {
   ErrorResponse,
   PaginatedSearchParams,
 } from "@/types/global";
-
-import action from "../handlers/action";
-import handleError from "../handlers/error";
-import { assignBadges } from "../utils";
-import {
-  GetUserAnswersSchema,
-  GetUserQuestionsSchema,
-  GetUserSchema,
-  GetUserTagsSchema,
-  PaginatedSearchParamsSchema,
-  UpdateUserSchema,
-} from "../validations";
 
 export async function getUsers(
   params: PaginatedSearchParams

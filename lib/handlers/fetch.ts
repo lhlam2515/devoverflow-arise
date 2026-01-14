@@ -1,8 +1,8 @@
+import { RequestError } from "@/lib/http-errors";
+import logger from "@/lib/logger";
 import { ActionResponse } from "@/types/global";
 
-import logger from "../logger";
 import handleError from "./error";
-import { RequestError } from "../http-errors";
 
 interface FetchOptions extends RequestInit {
   timeout?: number;
@@ -12,10 +12,10 @@ function isError(err: unknown): err is Error {
   return err instanceof Error;
 }
 
-export async function fetchHandler<T>(
+const fetchHandler = async <T>(
   url: string,
   options: FetchOptions = {}
-): Promise<ActionResponse<T>> {
+): Promise<ActionResponse<T>> => {
   const {
     timeout = 100000,
     headers: customHeaders = {},
@@ -58,4 +58,6 @@ export async function fetchHandler<T>(
 
     return handleError(error) as ActionResponse<T>;
   }
-}
+};
+
+export default fetchHandler;

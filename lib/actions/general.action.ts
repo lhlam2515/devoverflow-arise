@@ -1,12 +1,11 @@
 "use server";
 
 import { Question, Answer, User, Tag } from "@/database";
+import action from "@/lib/handlers/action";
+import handleError from "@/lib/handlers/error";
+import { GlobalSearchParamsSchema } from "@/lib/validations";
 import { GlobalSearchParams } from "@/types/action";
 import { ErrorResponse } from "@/types/global";
-
-import action from "../handlers/action";
-import handleError from "../handlers/error";
-import { GlobalSearchParamsSchema } from "../validations";
 
 export async function globalSearch(params: GlobalSearchParams) {
   const validationResult = await action({
