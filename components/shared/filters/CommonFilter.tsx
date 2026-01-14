@@ -10,8 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { formUrlQuery } from "@/lib/url";
-import { cn } from "@/lib/utils";
+import { cn, formUrlQuery } from "@/lib/utils";
 
 interface Filter {
   name: string;

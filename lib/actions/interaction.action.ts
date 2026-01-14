@@ -2,15 +2,14 @@ import mongoose from "mongoose";
 
 import { User, Interaction } from "@/database";
 import { IInteractionDoc } from "@/database/interaction.model";
+import action from "@/lib/handlers/action";
+import handleError from "@/lib/handlers/error";
+import { CreateInteractionSchema } from "@/lib/validations";
 import {
   CreateInteractionParams,
   UpdateReputationParams,
 } from "@/types/action";
 import { ActionResponse, ErrorResponse } from "@/types/global";
-
-import action from "../handlers/action";
-import handleError from "../handlers/error";
-import { CreateInteractionSchema } from "../validations";
 
 async function updateReputation(params: UpdateReputationParams) {
   const { interaction, session, performerId, authorId } = params;

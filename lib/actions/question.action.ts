@@ -9,6 +9,17 @@ import { auth } from "@/auth";
 import { Answer, Interaction, Collection, TagQuestion, Vote } from "@/database";
 import Question, { IQuestionDoc } from "@/database/question.model";
 import Tag, { ITagDoc } from "@/database/tag.model";
+import action from "@/lib/handlers/action";
+import handleError from "@/lib/handlers/error";
+import dbConnect from "@/lib/mongoose";
+import {
+  AskQuestionSchema,
+  DeleteQuestionSchema,
+  EditQuestionSchema,
+  GetQuestionSchema,
+  IncreaseViewsSchema,
+  PaginatedSearchParamsSchema,
+} from "@/lib/validations";
 import {
   CreateQuestionParams,
   DeleteQuestionParams,
@@ -24,17 +35,6 @@ import {
   PaginatedSearchParams,
 } from "@/types/global";
 
-import action from "../handlers/action";
-import handleError from "../handlers/error";
-import dbConnect from "../mongoose";
-import {
-  AskQuestionSchema,
-  DeleteQuestionSchema,
-  EditQuestionSchema,
-  GetQuestionSchema,
-  IncreaseViewsSchema,
-  PaginatedSearchParamsSchema,
-} from "../validations";
 import { createInteraction } from "./interaction.action";
 
 export async function createQuestion(

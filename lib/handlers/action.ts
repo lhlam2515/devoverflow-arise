@@ -4,9 +4,8 @@ import { Session } from "next-auth";
 import z, { ZodError, ZodType } from "zod";
 
 import { auth } from "@/auth";
-
-import { UnauthorizedError, ValidationError } from "../http-errors";
-import dbConnect from "../mongoose";
+import { UnauthorizedError, ValidationError } from "@/lib/http-errors";
+import dbConnect from "@/lib/mongoose";
 
 type ActionOption<T> = {
   params?: T;

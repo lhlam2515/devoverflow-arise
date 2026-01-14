@@ -1,6 +1,13 @@
 import { FilterQuery } from "mongoose";
 
 import { Question, Tag } from "@/database";
+import action from "@/lib/handlers/action";
+import handleError from "@/lib/handlers/error";
+import dbConnect from "@/lib/mongoose";
+import {
+  GetTagQuestionsSchema,
+  PaginatedSearchParamsSchema,
+} from "@/lib/validations";
 import { GetTagQuestionsParams } from "@/types/action";
 import {
   PaginatedSearchParams,
@@ -9,14 +16,6 @@ import {
   ErrorResponse,
   _Question,
 } from "@/types/global";
-
-import action from "../handlers/action";
-import handleError from "../handlers/error";
-import dbConnect from "../mongoose";
-import {
-  GetTagQuestionsSchema,
-  PaginatedSearchParamsSchema,
-} from "../validations";
 
 export async function getTags(
   params: PaginatedSearchParams

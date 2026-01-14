@@ -7,6 +7,8 @@ import { after } from "next/server";
 import ROUTES from "@/constants/routes";
 import { Question, Vote } from "@/database";
 import Answer, { IAnswerDoc } from "@/database/answer.model";
+import action from "@/lib/handlers/action";
+import handleError from "@/lib/handlers/error";
 import {
   CreateAnswerParams,
   DeleteAnswerParams,
@@ -14,8 +16,6 @@ import {
 } from "@/types/action";
 import { _Answer, ActionResponse, ErrorResponse } from "@/types/global";
 
-import action from "../handlers/action";
-import handleError from "../handlers/error";
 import {
   CreateAnswerSchema,
   DeleteAnswerSchema,

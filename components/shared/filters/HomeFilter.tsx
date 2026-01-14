@@ -4,8 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
-import { formUrlQuery, removeKeysFromUrlQuery } from "@/lib/url";
-import { cn } from "@/lib/utils";
+import { cn, formUrlQuery, removeKeysFromUrlQuery } from "@/lib/utils";
 
 const HomeFilter = () => {
   const router = useRouter();
