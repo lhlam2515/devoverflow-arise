@@ -3,7 +3,7 @@
 import { useSearchParams, useRouter } from "next/navigation";
 
 import { GlobalSearchFilters } from "@/constants/filters";
-import { formUrlQuery, removeKeysFromUrlQuery } from "@/lib/url";
+import { formUrlQuery, removeKeysFromUrlQuery } from "@/lib/utils";
 
 const GlobalFilter = () => {
   const router = useRouter();

@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 
 import { Input } from "@/components/ui/input";
-import { formUrlQuery, removeKeysFromUrlQuery } from "@/lib/url";
+import { formUrlQuery, removeKeysFromUrlQuery } from "@/lib/utils";
 
 import GlobalResult from "./GlobalResult";
 

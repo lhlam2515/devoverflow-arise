@@ -1,12 +1,12 @@
 import qs from "query-string";
 
-interface UrlQueryParams {
+export interface UrlQueryParams {
   params: string;
   key: string;
   value: string;
 }
 
-interface RemoveUrlQueryParams {
+export interface RemoveUrlQueryParams {
   params: string;
   keysToRemove: string[];
 }
