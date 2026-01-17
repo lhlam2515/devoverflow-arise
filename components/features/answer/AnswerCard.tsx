@@ -8,9 +8,9 @@ import { EditorPreview } from "@/components/shared/editor";
 import ROUTES from "@/constants/routes";
 import { hasVoted } from "@/lib/actions/vote.action";
 import { cn, getTimeStamp } from "@/lib/utils";
-import { _Answer } from "@/types/global";
+import { Answer } from "@/types";
 
-interface Props extends _Answer {
+interface Props extends Answer {
   containerClasses?: string;
   showReadMore?: boolean;
   showActionBtns?: boolean;

@@ -6,10 +6,11 @@ import action from "@/lib/handlers/action";
 import handleError from "@/lib/handlers/error";
 import { CreateInteractionSchema } from "@/lib/validations";
 import {
+  ActionResponse,
   CreateInteractionParams,
+  ErrorResponse,
   UpdateReputationParams,
-} from "@/types/action";
-import { ActionResponse, ErrorResponse } from "@/types/global";
+} from "@/types";
 
 async function updateReputation(params: UpdateReputationParams) {
   const { interaction, session, performerId, authorId } = params;

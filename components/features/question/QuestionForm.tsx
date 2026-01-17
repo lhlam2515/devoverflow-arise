@@ -23,14 +23,14 @@ import { Input } from "@/components/ui/input";
 import ROUTES from "@/constants/routes";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { AskQuestionSchema } from "@/lib/validations";
-import { _Question } from "@/types/global";
+import { Question } from "@/types";
 
 const Editor = dynamic(() => import("@/components/shared/editor/Editor"), {
   ssr: false,
 });
 
 interface Props {
-  question?: _Question;
+  question?: Question;
   isEdit?: boolean;
 }
 

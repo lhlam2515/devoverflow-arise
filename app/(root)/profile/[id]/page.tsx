@@ -19,7 +19,7 @@ import {
   getUserStats,
   getUserTopTags,
 } from "@/lib/actions/user.action";
-import { RouteParams } from "@/types/global";
+import { RouteParams } from "@/types";
 
 export async function generateMetadata({
   params,

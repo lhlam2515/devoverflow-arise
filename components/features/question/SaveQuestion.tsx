@@ -6,7 +6,7 @@ import { use, useState } from "react";
 import { toast } from "sonner";
 
 import { toggleSaveQuestion } from "@/lib/actions/collection.action";
-import { ActionResponse } from "@/types/global";
+import { ActionResponse } from "@/types";
 
 interface Props {
   questionId: string;

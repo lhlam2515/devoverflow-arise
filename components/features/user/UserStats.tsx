@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { formatNumber } from "@/lib/utils";
-import { BadgeCounts } from "@/types/global";
+import { BadgeCounts } from "@/types";
 
 interface Props {
   totalQuestions: number;

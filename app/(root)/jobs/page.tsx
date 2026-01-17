@@ -7,7 +7,7 @@ import {
   fetchJobs,
   fetchLocation,
 } from "@/lib/actions/job.action";
-import { RouteParams, Job } from "@/types/global";
+import { RouteParams, Job } from "@/types";
 
 export const metadata: Metadata = {
   title: "DevOverflow | Jobs",

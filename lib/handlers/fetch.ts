@@ -1,6 +1,6 @@
 import { RequestError } from "@/lib/http-errors";
 import logger from "@/lib/logger";
-import { ActionResponse } from "@/types/global";
+import { ActionResponse } from "@/types";
 
 import handleError from "./error";
 

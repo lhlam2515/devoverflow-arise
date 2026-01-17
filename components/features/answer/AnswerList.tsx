@@ -2,11 +2,11 @@ import { DataRenderer, Pagination } from "@/components/shared";
 import { CommonFilter } from "@/components/shared/filters";
 import { AnswerFilters } from "@/constants/filters";
 import { EMPTY_ANSWERS } from "@/constants/states";
-import { _Answer, ActionResponse } from "@/types/global";
+import { ActionResponse, Answer } from "@/types";
 
 import AnswerCard from "./AnswerCard";
 
-interface Props extends ActionResponse<_Answer[]> {
+interface Props extends ActionResponse<Answer[]> {
   page: number;
   isNext: boolean;
   totalAnswers: number;

@@ -12,13 +12,13 @@ import {
   CollectionBaseSchema,
   PaginatedSearchParamsSchema,
 } from "@/lib/validations";
-import { CollectionBaseParams } from "@/types/action";
 import {
-  _Collection,
   ActionResponse,
+  Collection as CollectionType,
+  CollectionBaseParams,
   ErrorResponse,
   PaginatedSearchParams,
-} from "@/types/global";
+} from "@/types";
 
 import { createInteraction } from "./interaction.action";
 
@@ -116,7 +116,7 @@ export async function hasSaveQuestion(
 
 export async function getSavedQuestions(
   params: PaginatedSearchParams
-): Promise<ActionResponse<{ collection: _Collection[]; isNext: boolean }>> {
+): Promise<ActionResponse<{ collection: CollectionType[]; isNext: boolean }>> {
   const validationResult = await action({
     params,
     schema: PaginatedSearchParamsSchema,

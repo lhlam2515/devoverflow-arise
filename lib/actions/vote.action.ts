@@ -14,12 +14,13 @@ import {
   UpdateVoteCountSchema,
 } from "@/lib/validations";
 import {
+  ActionResponse,
   CreateVoteParams,
+  ErrorResponse,
   HasVotedParams,
   HasVotedResponse,
   UpdateVoteCountParams,
-} from "@/types/action";
-import { ActionResponse, ErrorResponse } from "@/types/global";
+} from "@/types";
 
 import { createInteraction } from "./interaction.action";
 

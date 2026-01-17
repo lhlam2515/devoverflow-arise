@@ -21,25 +21,23 @@ import {
   PaginatedSearchParamsSchema,
 } from "@/lib/validations";
 import {
+  ActionResponse,
   CreateQuestionParams,
   DeleteQuestionParams,
   EditQuestionParams,
+  ErrorResponse,
   GetQuestionParams,
   IncreaseViewsParams,
-  RecommendationParams,
-} from "@/types/action";
-import {
-  ActionResponse,
-  _Question,
-  ErrorResponse,
   PaginatedSearchParams,
-} from "@/types/global";
+  Question as QuestionType,
+  RecommendationParams,
+} from "@/types";
 
 import { createInteraction } from "./interaction.action";
 
 export async function createQuestion(
   params: CreateQuestionParams
-): Promise<ActionResponse<_Question>> {
+): Promise<ActionResponse<QuestionType>> {
   const validationResult = await action({
     params,
     schema: AskQuestionSchema,
@@ -217,7 +215,7 @@ export async function editQuestion(
 }
 
 export const getQuestion = cache(
-  async (params: GetQuestionParams): Promise<ActionResponse<_Question>> => {
+  async (params: GetQuestionParams): Promise<ActionResponse<QuestionType>> => {
     const validationResult = await action({
       params,
       schema: GetQuestionSchema,
@@ -250,7 +248,10 @@ export async function getRecommendedQuestions({
   query,
   skip,
   limit,
-}: RecommendationParams): Promise<{ questions: _Question[]; isNext: boolean }> {
+}: RecommendationParams): Promise<{
+  questions: QuestionType[];
+  isNext: boolean;
+}> {
   // Get user's recent interactions
   const interactions = await Interaction.find({
     user: new Types.ObjectId(userId),
@@ -310,7 +311,7 @@ export async function getRecommendedQuestions({
 
 export async function getQuestions(
   params: PaginatedSearchParams
-): Promise<ActionResponse<{ questions: _Question[]; isNext: boolean }>> {
+): Promise<ActionResponse<{ questions: QuestionType[]; isNext: boolean }>> {
   const validationResult = await action({
     params,
     schema: PaginatedSearchParamsSchema,
@@ -424,7 +425,9 @@ export async function increaseViews(
   }
 }
 
-export async function getHotQuestions(): Promise<ActionResponse<_Question[]>> {
+export async function getHotQuestions(): Promise<
+  ActionResponse<QuestionType[]>
+> {
   try {
     await dbConnect();
 

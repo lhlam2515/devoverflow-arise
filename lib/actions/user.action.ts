@@ -16,25 +16,23 @@ import {
   UpdateUserSchema,
 } from "@/lib/validations";
 import {
+  ActionResponse,
+  Answer as AnswerType,
+  Badges,
+  ErrorResponse,
   GetUserAnswersParams,
   GetUserParams,
   GetUserQuestionsParams,
   GetUserTagsParams,
-  UpdateUserParams,
-} from "@/types/action";
-import {
-  _Answer,
-  _Question,
-  _User,
-  ActionResponse,
-  Badges,
-  ErrorResponse,
   PaginatedSearchParams,
-} from "@/types/global";
+  Question as QuestionType,
+  UpdateUserParams,
+  User as UserType,
+} from "@/types";
 
 export async function getUsers(
   params: PaginatedSearchParams
-): Promise<ActionResponse<{ users: _User[]; isNext: boolean }>> {
+): Promise<ActionResponse<{ users: UserType[]; isNext: boolean }>> {
   const validationResult = await action({
     params,
     schema: PaginatedSearchParamsSchema,
@@ -94,7 +92,9 @@ export async function getUsers(
 }
 
 export const getUser = cache(
-  async (params: GetUserParams): Promise<ActionResponse<{ user: _User }>> => {
+  async (
+    params: GetUserParams
+  ): Promise<ActionResponse<{ user: UserType }>> => {
     const validationResult = await action({
       params,
       schema: GetUserSchema,
@@ -125,7 +125,7 @@ export const getUser = cache(
 
 export async function getUserQuestions(params: GetUserQuestionsParams): Promise<
   ActionResponse<{
-    questions: _Question[];
+    questions: QuestionType[];
     isNext: boolean;
   }>
 > {
@@ -168,7 +168,7 @@ export async function getUserQuestions(params: GetUserQuestionsParams): Promise<
 
 export async function getUserAnswers(params: GetUserAnswersParams): Promise<
   ActionResponse<{
-    answers: _Answer[];
+    answers: AnswerType[];
     isNext: boolean;
   }>
 > {
@@ -324,7 +324,7 @@ export async function getUserStats(params: GetUserParams): Promise<
 
 export async function updateUser(
   params: UpdateUserParams
-): Promise<ActionResponse<{ user: _User }>> {
+): Promise<ActionResponse<{ user: UserType }>> {
   const validationResult = await action({
     params,
     schema: UpdateUserSchema,

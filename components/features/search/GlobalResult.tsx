@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 import { globalSearch } from "@/lib/actions/general.action";
-import { GlobalSearchedItem } from "@/types/global";
+import { GlobalSearchedItem } from "@/types";
 
 import GlobalFilter from "./GlobalFilter";
 

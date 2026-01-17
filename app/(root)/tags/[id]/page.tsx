@@ -7,7 +7,7 @@ import { HomePageFilters } from "@/constants/filters";
 import ROUTES from "@/constants/routes";
 import { EMPTY_QUESTION } from "@/constants/states";
 import { getTagQuestions } from "@/lib/actions/tag.action";
-import { RouteParams } from "@/types/global";
+import { RouteParams } from "@/types";
 
 const Page = async ({ params, searchParams }: RouteParams) => {
   const { id } = await params;

@@ -10,17 +10,19 @@ import Answer, { IAnswerDoc } from "@/database/answer.model";
 import action from "@/lib/handlers/action";
 import handleError from "@/lib/handlers/error";
 import {
-  CreateAnswerParams,
-  DeleteAnswerParams,
-  GetAnswersParams,
-} from "@/types/action";
-import { _Answer, ActionResponse, ErrorResponse } from "@/types/global";
-
-import {
   CreateAnswerSchema,
   DeleteAnswerSchema,
   GetAnswersSchema,
-} from "../validations";
+} from "@/lib/validations";
+import {
+  ActionResponse,
+  Answer as AnswerType,
+  CreateAnswerParams,
+  DeleteAnswerParams,
+  ErrorResponse,
+  GetAnswersParams,
+} from "@/types";
+
 import { createInteraction } from "./interaction.action";
 
 export async function createAnswer(
@@ -88,10 +90,12 @@ export async function createAnswer(
   }
 }
 
-export async function getAnswers(
-  params: GetAnswersParams
-): Promise<
-  ActionResponse<{ answers: _Answer[]; isNext: boolean; totalAnswers: number }>
+export async function getAnswers(params: GetAnswersParams): Promise<
+  ActionResponse<{
+    answers: AnswerType[];
+    isNext: boolean;
+    totalAnswers: number;
+  }>
 > {
   const validationResult = await action({
     params,
