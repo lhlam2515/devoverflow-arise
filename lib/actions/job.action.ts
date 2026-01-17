@@ -1,5 +1,4 @@
-import { JobFilterParams } from "@/types/action";
-import { Job } from "@/types/global";
+import { JobFilterParams, Job } from "@/types";
 
 export const fetchLocation = async () => {
   try {
