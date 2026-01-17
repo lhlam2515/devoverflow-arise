@@ -6,10 +6,10 @@ import { UserActions } from "@/components/features/user";
 import { Metric } from "@/components/shared";
 import ROUTES from "@/constants/routes";
 import { getTimeStamp } from "@/lib/utils";
-import { _Question, _Tag } from "@/types/global";
+import { Question, Tag } from "@/types";
 
 interface Props {
-  question: _Question;
+  question: Question;
   showActionBtns?: boolean;
 }
 
@@ -36,7 +36,7 @@ const QuestionCard = ({
       </div>
 
       <div className="mt-3.5 flex w-full flex-wrap gap-2">
-        {tags.map((tag: _Tag) => (
+        {tags.map((tag: Tag) => (
           <TagCard key={tag._id} {...tag} compact />
         ))}
       </div>

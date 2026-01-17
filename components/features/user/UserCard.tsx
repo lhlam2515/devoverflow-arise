@@ -2,9 +2,9 @@ import Link from "next/link";
 
 import { UserAvatar } from "@/components/shared";
 import ROUTES from "@/constants/routes";
-import { _User } from "@/types/global";
+import { User } from "@/types";
 
-const UserCard = ({ _id, name, username, image }: _User) => (
+const UserCard = ({ _id, name, username, image }: User) => (
   <div className="shadow-light100-darknone xs:w-[230px] w-full">
     <article className="bg-light900-dark200 border-light800-dark300 flex w-full flex-col items-center justify-center rounded-2xl border p-8">
       <UserAvatar

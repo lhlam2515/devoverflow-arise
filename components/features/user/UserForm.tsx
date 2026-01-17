@@ -20,10 +20,10 @@ import { Textarea } from "@/components/ui/textarea";
 import ROUTES from "@/constants/routes";
 import { updateUser } from "@/lib/actions/user.action";
 import { ProfileSchema } from "@/lib/validations";
-import { _User } from "@/types/global";
+import { User } from "@/types";
 
 interface Params {
-  user: _User;
+  user: User;
 }
 
 const UserForm = ({ user }: Params) => {

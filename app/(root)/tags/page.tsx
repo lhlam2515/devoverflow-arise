@@ -8,7 +8,7 @@ import { TagFilters } from "@/constants/filters";
 import ROUTES from "@/constants/routes";
 import { EMPTY_TAGS } from "@/constants/states";
 import { getTags } from "@/lib/actions/tag.action";
-import { RouteParams } from "@/types/global";
+import { RouteParams } from "@/types";
 
 export const metadata: Metadata = {
   title: "DevOverflow | Tags",

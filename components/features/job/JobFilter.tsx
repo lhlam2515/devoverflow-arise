@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { formUrlQuery } from "@/lib/utils";
-import { Country } from "@/types/global";
+import { Country } from "@/types";
 
 interface JobFilterProps {
   countriesList: Country[];

@@ -17,7 +17,7 @@ import { createInteraction } from "@/lib/actions/interaction.action";
 import { getQuestion, increaseViews } from "@/lib/actions/question.action";
 import { hasVoted } from "@/lib/actions/vote.action";
 import { formatNumber, getTimeStamp } from "@/lib/utils";
-import { RouteParams } from "@/types/global";
+import { RouteParams } from "@/types";
 
 export async function generateMetadata({
   params,

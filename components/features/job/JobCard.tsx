@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { processJobTitle } from "@/lib/utils";
-import { Job } from "@/types/global";
+import { Job } from "@/types";
 
 interface JobLocationProps {
   job_country?: string;

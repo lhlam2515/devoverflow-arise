@@ -7,8 +7,7 @@ import { toast } from "sonner";
 
 import { createVote } from "@/lib/actions/vote.action";
 import { formatNumber } from "@/lib/utils";
-import { HasVotedResponse } from "@/types/action";
-import { ActionResponse } from "@/types/global";
+import { ActionResponse, HasVotedResponse } from "@/types";
 
 interface Props {
   targetId: string;

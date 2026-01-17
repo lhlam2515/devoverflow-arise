@@ -4,7 +4,7 @@ import { auth } from "@/auth";
 import { UserForm } from "@/components/features/user";
 import ROUTES from "@/constants/routes";
 import { getUser } from "@/lib/actions/user.action";
-import { _User } from "@/types/global";
+import { User } from "@/types";
 
 const Page = async () => {
   const session = await auth();
@@ -17,7 +17,7 @@ const Page = async () => {
     <>
       <h1 className="h1-bold tex-dark100-light900">Edit Profile</h1>
 
-      <UserForm user={data?.user as _User} />
+      <UserForm user={data?.user as User} />
     </>
   );
 
